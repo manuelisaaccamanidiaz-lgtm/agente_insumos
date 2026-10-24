@@ -11,4 +11,5 @@ from agente import config
 
 def crear_cliente() -> OpenAI:
     config.validar_config()
-    return OpenAI(api_key=config.XAI_API_KEY, base_url=config.XAI_BASE_URL)
+    # timeout: que una caída de la API no deje la consola colgada (el SDK trae 10 min)
+    return OpenAI(api_key=config.XAI_API_KEY, base_url=config.XAI_BASE_URL, timeout=60)
