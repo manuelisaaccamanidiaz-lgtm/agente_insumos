@@ -128,6 +128,7 @@ Con el segundo ejemplo se comprueba que el agente **no inventa precios** cuando 
 ```
 agente-insumos/
 ├── main.py                 # Punto de entrada (CLI / chat)
+├── app.py                  # 💬 Interfaz web de chat (Streamlit)
 ├── agente/
 │   ├── config.py           # Lee el .env (claves, modelo, rutas)
 │   ├── llm.py              # Cliente de Grok (API compatible con OpenAI)
@@ -163,8 +164,19 @@ pytest -v                   # 1) pruebas sin gastar API ni usar internet
 python main.py "¿Cómo está la urea en Santander?"   # 2) agente real
 python main.py              # 3) modo chat
 python main.py --demo       # 4) los 3 casos del video
+streamlit run app.py        # 5) interfaz web de chat (se abre en http://localhost:8501)
 ```
 
+### 💬 Interfaz web (Streamlit)
+
+`streamlit run app.py` abre un chat en el navegador que usa **el mismo agente** que la consola
+(`ejecutar_agente` + `crear_cliente`, sin cambiar su lógica):
+
+- Debajo de cada respuesta, **🔧 Herramientas usadas** muestra el rastro: nombre, argumentos, ✅/❌ y duración en ms.
+- Barra lateral: preguntas de ejemplo (caso feliz y caso sin datos), **Simular falla de TRM**
+  (activa `SIMULAR_FALLA_TRM`) y **Limpiar chat**.
+- Si falta configuración en el `.env`, muestra el error con los pasos para arreglarlo en vez de romperse.
+- Cada pregunta se responde por separado: el agente todavía no recuerda los mensajes anteriores.
 
 ### 📲 Configurar Telegram (para `enviar_alerta`)
 
