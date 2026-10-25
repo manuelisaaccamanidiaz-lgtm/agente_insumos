@@ -4,7 +4,6 @@ Agente de IA en Python que consulta precios de insumos (urea, DAP, KCl…) por r
 **Cerebro:** Grok (xAI) · **Lenguaje:** Python 3.11+
 
 ## 🎯 El problema
-
 El precio del fertilizante define la rentabilidad de la cosecha, y el pequeño productor
 **compra cuando necesita, no cuando conviene**. No tiene tiempo ni herramientas para seguir
 los precios por región y anticipar cuándo es buen momento para comprar.
@@ -80,7 +79,7 @@ python main.py --demo
 
 Corre en orden: **1)** caso feliz con las 4 herramientas (urea en Santander + aviso por Telegram),
 **2)** caso sin datos (glifosato en Nariño), **3)** caída simulada de la TRM (`SIMULAR_FALLA_TRM=1`).
-Guion: [docs/guion_video_s2.md](docs/guion_video_s2.md).
+🎬 **Video de la S2:** https://youtu.be/_SfU-sRlvlQ
 
 ```text
   🔧 consultar_precios({"insumo":"urea","region":"Santander"}) ✅ 1 ms
@@ -139,7 +138,6 @@ agente-insumos/
 ├── data/
 │   ├── precios_ejemplo.csv # Precios FICTICIOS
 │   └── insumos.db          # (se genera, no se sube a GitHub)
-├── docs/guion_video_s2.md  # 🎬 Guion del video de S2
 ├── tests/
 │   ├── conftest.py         # BD SQLite temporal para cada prueba
 │   ├── test_agente.py      # Loop con un LLM falso (no gasta API)
