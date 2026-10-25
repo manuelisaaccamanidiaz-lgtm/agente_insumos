@@ -53,7 +53,7 @@ def _llamar_llm(cliente, modelo: str, mensajes: list) -> tuple[object | None, st
     except openai.APIStatusError as e:
         detalle = str(getattr(e, "message", "") or "")
         if "api key" in detalle.lower():  # xAI responde 400 (no 401) cuando la clave es incorrecta
-            return None, "Grok rechazó la API key. Revisa XAI_API_KEY en el .env (empieza con 'xai-')."
+            return None, "Grok rechazó la API key. Revisa XAI_API_KEY y XAI_BASE_URL en el .env."
         return None, f"La API de Grok respondió con error HTTP {e.status_code}: {detalle[:200]}"
 
 

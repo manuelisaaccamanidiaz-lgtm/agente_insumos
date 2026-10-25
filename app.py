@@ -64,7 +64,7 @@ except SystemExit as e:  # validar_config() avisa así cuando falta algo en el .
     st.error(
         f"{e}\n\n**Cómo arreglarlo:**\n"
         "1. Copia `.env.example` como `.env` en la carpeta del proyecto.\n"
-        "2. Llena `XAI_API_KEY` (empieza con `xai-`, se crea en https://console.x.ai) y `GROK_MODEL`.\n"
+        "2. Llena `XAI_API_KEY`, `XAI_BASE_URL` y `GROK_MODEL` con los datos de tu panel de la plataforma del reto.\n"
         "3. Detén la app (Ctrl+C) y vuelve a correr `streamlit run app.py`."
     )
     st.stop()

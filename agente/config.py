@@ -12,7 +12,8 @@ RAIZ = Path(__file__).resolve().parent.parent
 load_dotenv(RAIZ / ".env")
 
 # ⚠️ MANUAL: pega tu API key de Grok en el archivo .env (variable XAI_API_KEY).
-#    Se crea en https://console.x.ai  →  API Keys.
+#    Con la plataforma del reto se crea en tu panel (empieza por pk_) y va junto
+#    con la XAI_BASE_URL que te da esa misma plataforma.
 XAI_API_KEY = os.getenv("XAI_API_KEY", "")
 
 # ⚠️ MANUAL: verifica en la documentación de xAI la URL base y el nombre del
