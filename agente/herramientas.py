@@ -245,6 +245,24 @@ def enviar_alerta(mensaje: str, chat_id: str | None = None) -> dict:
     return {"enviado": True, "chat_id": str(destino),
             "message_id": datos.get("result", {}).get("message_id")}
 
+def calcular_costo_compra(insumo: str, region: str, bultos: int)->dict:
+    """costo total  de comprar N bultos al ultimo precio registrado"""
+    if not isinstance(bultos, int) or bultos <= 0:
+        return _error("la cantidad de bultos debe ser mayor a 0","validacion")
+
+    historial = _historial_o_error(insumo, region)
+    if isinstance(historial, dict):
+        return historial
+
+    precio = historial[-1]["precio_cop"]
+    return {
+        "insumo": historial[0]["insumo"],
+        "region": historial[0]["region"],
+        "bultos": bultos,
+        "precio_unitario_cop": precio,
+        "total_cop": precio * bultos,
+        "es_ejemplo": all(f["fuente"] == "ejemplo" for f in historial)
+    }
 
 # ---------- 2. Esquemas (lo que "lee" el LLM) ----------
 _PARAMS_INSUMO_REGION = {
@@ -313,6 +331,24 @@ ESQUEMAS = [
             },
         },
     },
+    {
+        "type": "function",
+        "function": {
+            "name": "calcular_costo_compra",
+            "description": (
+                "calcula cuanto cuestan N bultos de un insumo en una region al precio actual. "
+                "Usalo cuando pregunten cuanto van a gastar en total"
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    **_PARAMS_INSUMO_REGION["properties"],
+                    "bultos" : {"type": "integer", "description": "numero de bultos a comprar(mayor a 0)"}, 
+                },
+                "required" : ["insumo", "region", "bultos"],
+            }
+        }
+    },
 ]
 
 # ---------- 3. Registro: nombre -> función ----------
@@ -321,6 +357,7 @@ REGISTRO = {
     "analizar_tendencia": analizar_tendencia,
     "consultar_trm": consultar_trm,
     "enviar_alerta": enviar_alerta,
+    "calcular_costo_compra": calcular_costo_compra,
 }
 
 
