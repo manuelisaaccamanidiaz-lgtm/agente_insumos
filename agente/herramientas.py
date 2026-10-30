@@ -7,11 +7,13 @@ Cada herramienta tiene 2 partes:
 El LLM nunca ejecuta código: solo PIDE "llama consultar_precios con X".
 Nosotros ejecutamos y le devolvemos el resultado.
 
-S2: 4 herramientas que hacen algo REAL:
-  - consultar_precios   → consulta la BD SQLite
-  - analizar_tendencia  → lee la BD y calcula tendencia + recomendación
-  - consultar_trm       → API pública de datos.gov.co (dólar oficial)
-  - enviar_alerta       → API de bots de Telegram
+S3: los precios son REALES (DANE · SIPSA-Insumos), MENSUALES y por municipio:
+  - consultar_precios          → últimos 12 meses del departamento (o de un municipio)
+  - analizar_tendencia         → pendiente de los últimos 6 meses + mismo mes del año anterior
+  - consultar_regiones_vecinas → último precio en los departamentos vecinos (más barato primero)
+  - calcular_costo_compra      → N bultos al último precio real
+  - consultar_trm              → API pública de datos.gov.co (dólar oficial)
+  - enviar_alerta              → API de bots de Telegram
 
 Contrato de TODAS las herramientas: siempre devuelven un dict y NUNCA lanzan
 excepciones. Si algo falla devuelven:
@@ -20,18 +22,22 @@ Así el LLM puede explicar qué pasó y seguir con lo que sí tiene.
 """
 import json
 import sqlite3
-from datetime import date
 
 import requests
 
 from agente import config
-from agente.datos import (BaseDeDatosNoEncontrada, buscar_historial, insumos_disponibles,
-                          regiones_disponibles)
+from agente.catalogo import (NOMBRES_CORTOS, PRESENTACIONES, VECINOS, resolver_departamento,
+                             resolver_insumo)
+from agente.datos import (BaseDeDatosNoEncontrada, buscar_departamento_de_municipio, buscar_historial,
+                          municipios_disponibles, regiones_disponibles, ultimo_periodo_disponible,
+                          ultimo_precio_por_departamento)
 
-# Umbral de la recomendación: cambio semanal (pendiente / promedio) que consideramos "real"
-UMBRAL_PCT_SEMANAL = 1.0
+MESES_CONSULTA = 12  # consultar_precios devuelve solo el último año (menos tokens para el LLM)
+MESES_TENDENCIA = 6  # ventana de la pendiente en analizar_tendencia
 LIMITE_MENSAJE = 1000  # caracteres máximos de una alerta
 FUENTE_TRM = "datos.gov.co · TRM certificada (Superintendencia Financiera)"
+NOMBRES_MES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto",
+               "septiembre", "octubre", "noviembre", "diciembre"]
 
 
 def _error(mensaje: str, tipo: str) -> dict:
@@ -49,41 +55,136 @@ def _pct(valor: float, signo: bool = False) -> str:
     return (f"{valor:+.1f}" if signo else f"{valor:.1f}").replace(".", ",") + "%"
 
 
-def _historial_o_error(insumo: str, region: str) -> list[dict] | dict:
-    """Busca el historial en la BD. Si no hay datos devuelve un error que incluye
-    las alternativas disponibles, para que el LLM pueda sugerirlas."""
+# ---------- Ayudas para trabajar con meses 'AAAA-MM' ----------
+def _indice(periodo: str) -> int:
+    """'2026-09' -> meses contados desde el año 0. Así restar meses no tiene líos de año."""
+    anio, mes = periodo.split("-")
+    return int(anio) * 12 + int(mes) - 1
+
+
+def _periodo(indice: int) -> str:
+    """Inverso de _indice: 24320 -> '2026-09'."""
+    return f"{indice // 12}-{indice % 12 + 1:02d}"
+
+
+def _mes_texto(periodo: str) -> str:
+    """'2026-09' -> 'septiembre 2026'."""
+    return f"{NOMBRES_MES[int(periodo[5:]) - 1]} {periodo[:4]}"
+
+
+def _vigencia(periodo: str, publicado: str) -> dict:
+    """Qué tan viejo es el último dato de un lugar frente al último mes que publicó el DANE."""
+    atraso = _indice(publicado) - _indice(periodo)
+    return {"meses_de_atraso": atraso, "dato_desactualizado": atraso > config.MESES_DATO_VIGENTE}
+
+
+def _resolver(insumo: str, region: str, municipio: str | None) -> tuple[str, str, str | None] | dict:
+    """Traduce lo que mandó el LLM a nombres oficiales: (producto, departamento, municipio).
+    Si en `region` viene un municipio ('Bucaramanga'), busca su departamento."""
+    producto = resolver_insumo(insumo)
+    if not producto:
+        return _error(f"No hay datos de '{insumo}': no está en el catálogo del DANE que usamos. "
+                      f"Insumos disponibles: {', '.join(NOMBRES_CORTOS.values())}.", "sin_datos")
+    departamento = resolver_departamento(region)
+    if not departamento:
+        candidatos = buscar_departamento_de_municipio(config.RUTA_BD, region)
+        if len(candidatos) != 1:
+            return _error(f"'{region}' no es un departamento de Colombia. Usa el departamento en "
+                          "`region` (ej: Santander) y, si quieres, el municipio en `municipio`.",
+                          "validacion")
+        departamento, municipio = candidatos[0][0], municipio or candidatos[0][1]
+    return producto, departamento, municipio
+
+
+def _historial_o_error(insumo: str, region: str, municipio: str | None = None,
+                       meses: int = MESES_CONSULTA) -> tuple[list[dict], str] | dict:
+    """Historial de los últimos `meses` publicados por el DANE + el último mes publicado.
+    Si no hay datos, devuelve un error con las alternativas que SÍ existen (municipios del
+    departamento o departamentos con datos recientes), para que el LLM pueda sugerirlas."""
     try:
-        historial = buscar_historial(config.RUTA_BD, insumo, region)
+        nombres = _resolver(insumo, region, municipio)
+        if isinstance(nombres, dict):
+            return nombres
+        producto, departamento, municipio = nombres
+        publicado = ultimo_periodo_disponible(config.RUTA_BD)
+        if not publicado:
+            return _error("La base de precios está vacía. Cárgala con: python scripts/actualizar_sipsa.py",
+                          "config")
+        desde = _periodo(_indice(publicado) - meses + 1)
+        historial = buscar_historial(config.RUTA_BD, producto, departamento, municipio, desde)
         if historial:
-            return historial
-        regiones = regiones_disponibles(config.RUTA_BD, insumo)
-        if regiones:
-            pista = f"Hay datos de '{insumo}' en: {', '.join(regiones)}."
+            return historial, publicado
+
+        corto = NOMBRES_CORTOS[producto]
+        lugar = f"{municipio} ({departamento})" if municipio else departamento
+        mensaje = (f"No hay datos de {corto} en {lugar} en los últimos {meses} meses publicados por "
+                   f"el DANE (último mes publicado: {_mes_texto(publicado)}).")
+        viejo = buscar_historial(config.RUTA_BD, producto, departamento, municipio)
+        if viejo:
+            mensaje += f" El último dato de {lugar} es de {_mes_texto(viejo[-1]['periodo'])}."
+        otros = municipios_disponibles(config.RUTA_BD, departamento, producto) if municipio else []
+        if otros:
+            mensaje += f" En {departamento} hay datos de {corto} en: {', '.join(otros)}."
         else:
-            otros = insumos_disponibles(config.RUTA_BD, region) or insumos_disponibles(config.RUTA_BD)
-            pista = f"No hay datos de '{insumo}' en ninguna región. Insumos disponibles: {', '.join(otros)}."
-        return _error(f"No hay datos de '{insumo}' en '{region}'. {pista}", "sin_datos")
+            recientes = regiones_disponibles(config.RUTA_BD, producto, desde)
+            mensaje += f" Departamentos con datos de {corto}: {', '.join(recientes) or 'ninguno'}."
+        return _error(mensaje, "sin_datos")
     except BaseDeDatosNoEncontrada as e:
         return _error(str(e), "config")
     except sqlite3.Error as e:
         return _error(f"No se pudo leer la base de datos de precios ({e}). "
-                      "Prueba de nuevo con: python scripts/cargar_bd.py", "config")
+                      "Actualízala con: python scripts/actualizar_sipsa.py", "config")
+
+
+def _ubicacion(fila: dict) -> dict:
+    """region (+ municipio si la serie es de un municipio)."""
+    return {"region": fila["region"], **({"municipio": fila["municipio"]} if "municipio" in fila else {})}
+
+
+def _referencia_departamento(ultimo: dict, publicado: str) -> dict:
+    """Si el dato de un MUNICIPIO está desactualizado, agrega el último precio de su
+    departamento para que el agente tenga una cifra reciente con qué comparar."""
+    if "municipio" not in ultimo or not _vigencia(ultimo["periodo"], publicado)["dato_desactualizado"]:
+        return {}
+    try:
+        del_departamento = buscar_historial(config.RUTA_BD, ultimo["insumo"], ultimo["region"],
+                                            desde=_periodo(_indice(publicado) - MESES_CONSULTA + 1))
+    except (BaseDeDatosNoEncontrada, sqlite3.Error):
+        return {}
+    if not del_departamento:
+        return {}
+    fila = del_departamento[-1]
+    return {"referencia_departamento": {
+        "region": fila["region"], "periodo": fila["periodo"], "precio_cop": fila["precio_cop"],
+        "precio_min": fila["precio_min"], "precio_max": fila["precio_max"],
+        "n_municipios": fila["n_municipios"], **_vigencia(fila["periodo"], publicado)}}
 
 
 # ---------- 1. Funciones ----------
-def consultar_precios(insumo: str, region: str) -> dict:
-    """Devuelve el historial de precios de un insumo en una región (desde SQLite)."""
-    historial = _historial_o_error(insumo, region)
-    if isinstance(historial, dict):
-        return historial
-    fuentes = sorted({f["fuente"] for f in historial})
+def consultar_precios(insumo: str, region: str, municipio: str | None = None) -> dict:
+    """Precios MENSUALES de los últimos 12 meses de un insumo en un departamento
+    (promedio de sus municipios, con rango min-max) o en un municipio."""
+    resultado = _historial_o_error(insumo, region, municipio)
+    if isinstance(resultado, dict):
+        return resultado
+    historial, publicado = resultado
+    ultimo = historial[-1]
     return {
-        "insumo": historial[0]["insumo"],
-        "region": historial[0]["region"],
-        "unidad": historial[0]["unidad"],
-        "fuente": ", ".join(fuentes),
-        "es_ejemplo": fuentes == ["ejemplo"],  # True → precios FICTICIOS, hay que decirlo
-        "historial": [{"fecha": f["fecha"], "precio_cop": f["precio_cop"]} for f in historial],
+        "insumo": ultimo["insumo"],
+        **_ubicacion(ultimo),
+        "unidad": ultimo["unidad"],
+        "ultimo_periodo": ultimo["periodo"],
+        "ultimo_mes": _mes_texto(ultimo["periodo"]),
+        "precio_actual_cop": ultimo["precio_cop"],
+        "precio_min_cop": ultimo["precio_min"],
+        "precio_max_cop": ultimo["precio_max"],
+        "n_municipios": ultimo["n_municipios"],
+        **_vigencia(ultimo["periodo"], publicado),
+        **_referencia_departamento(ultimo, publicado),
+        "fuente": f"DANE-SIPSA (mes publicado: {_mes_texto(publicado)})",
+        "es_ejemplo": any(f["fuente"] == "ejemplo" for f in historial),  # True → precios FICTICIOS
+        "historial": [{k: f[k] for k in ("periodo", "precio_cop", "precio_min", "precio_max", "n_municipios")}
+                      for f in historial],
     }
 
 
@@ -96,67 +197,168 @@ def _pendiente(xs: list[float], ys: list[float]) -> float:
     return numerador / denominador if denominador else 0.0
 
 
-def analizar_tendencia(insumo: str, region: str) -> dict:
-    """Analiza el historial y recomienda si comprar ya o esperar.
+def analizar_tendencia(insumo: str, region: str, municipio: str | None = None) -> dict:
+    """Analiza los precios MENSUALES y recomienda si comprar ya o esperar.
 
     Reglas de la recomendación (simples a propósito, para poder explicarlas):
-      - Se calcula la pendiente en COP por semana (regresión lineal) y se pasa a %
-        del precio promedio → "pendiente_pct_semana".
-      - pendiente ≤ -1 %/semana → "esperar"    (el precio viene bajando)
-      - pendiente ≥ +1 %/semana → "comprar_ya" (el precio viene subiendo)
-      - entre -1 % y +1 %       → "neutral"    (precio estable: comprar cuando se necesite)
+      - Con los últimos 6 meses se calcula la pendiente en COP por mes (regresión lineal;
+        el eje x son meses reales, así un mes sin dato no deforma la recta) y se pasa a %
+        del precio promedio → "pendiente_pct_mes".
+      - pendiente ≤ -2 %/mes → "esperar"    (el precio viene bajando)
+      - pendiente ≥ +2 %/mes → "comprar_ya" (el precio viene subiendo)
+      - en medio             → "neutral"    (precio estable: comprar cuando se necesite)
+      (el 2 % se cambia con UMBRAL_PCT_MENSUAL en el .env)
+    Además compara contra el MISMO MES del año anterior, si existe (efecto de temporada).
     """
-    historial = _historial_o_error(insumo, region)
-    if isinstance(historial, dict):
-        return historial
-    if len(historial) < 2:
-        return _error(f"Solo hay {len(historial)} dato de '{insumo}' en '{region}'; "
-                      "se necesitan al menos 2 para ver una tendencia.", "sin_datos")
+    resultado = _historial_o_error(insumo, region, municipio, meses=MESES_CONSULTA + 1)
+    if isinstance(resultado, dict):
+        return resultado
+    historial, publicado = resultado
+    ultimo = historial[-1]
+    recientes = [f for f in historial if _indice(ultimo["periodo"]) - _indice(f["periodo"]) < MESES_TENDENCIA]
+    if len(recientes) < 2:
+        return _error(f"Solo hay {len(recientes)} mes con datos de {NOMBRES_CORTOS[ultimo['insumo']]} en "
+                      f"{ultimo['region']} en los últimos {MESES_TENDENCIA} meses; se necesitan al menos 2 "
+                      "para ver una tendencia.", "sin_datos")
 
-    try:
-        fechas = [date.fromisoformat(f["fecha"]) for f in historial]
-    except ValueError:
-        return _error("Hay fechas con formato inválido en la base de datos.", "validacion")
-    precios = [f["precio_cop"] for f in historial]
-    semanas = [(d - fechas[0]).days / 7 for d in fechas]  # eje x en semanas
-
+    meses = [_indice(f["periodo"]) for f in recientes]
+    precios = [f["precio_cop"] for f in recientes]
     promedio = sum(precios) / len(precios)
-    pendiente = _pendiente(semanas, precios)
+    pendiente = _pendiente(meses, precios)
     pendiente_pct = pendiente / promedio * 100
-    variacion_total = (precios[-1] - precios[0]) / precios[0] * 100
-    variacion_semana = (precios[-1] - precios[-2]) / precios[-2] * 100
-    unidad = historial[0]["unidad"]
+    umbral, unidad = config.UMBRAL_PCT_MENSUAL, ultimo["unidad"]
+    anterior = recientes[-2]
+    variacion_anterior = (precios[-1] - anterior["precio_cop"]) / anterior["precio_cop"] * 100
+    hace_un_anio = _periodo(_indice(ultimo["periodo"]) - 12)
+    anio_pasado = next((f for f in historial if f["periodo"] == hace_un_anio), None)
 
-    if pendiente_pct <= -UMBRAL_PCT_SEMANAL:
+    if pendiente_pct <= -umbral:
         recomendacion = "esperar"
-        porque = (f"El precio viene bajando cerca de {_pct(abs(pendiente_pct))} por semana "
-                  f"({_pesos(abs(pendiente))} menos por {unidad} cada semana), así que conviene esperar.")
-    elif pendiente_pct >= UMBRAL_PCT_SEMANAL:
+        porque = (f"En los últimos {MESES_TENDENCIA} meses el precio viene bajando cerca de "
+                  f"{_pct(abs(pendiente_pct))} por mes ({_pesos(abs(pendiente))} menos por {unidad} "
+                  "cada mes), así que conviene esperar.")
+    elif pendiente_pct >= umbral:
         recomendacion = "comprar_ya"
-        porque = (f"El precio viene subiendo cerca de {_pct(pendiente_pct)} por semana "
-                  f"({_pesos(pendiente)} más por {unidad} cada semana), así que conviene comprar ya.")
+        porque = (f"En los últimos {MESES_TENDENCIA} meses el precio viene subiendo cerca de "
+                  f"{_pct(pendiente_pct)} por mes ({_pesos(pendiente)} más por {unidad} cada mes), "
+                  "así que conviene comprar ya.")
     else:
         recomendacion = "neutral"
-        porque = (f"El precio está casi quieto ({_pct(pendiente_pct, signo=True)} por semana), "
-                  "así que no hay apuro: compre cuando lo necesite.")
+        porque = (f"En los últimos {MESES_TENDENCIA} meses el precio está casi quieto "
+                  f"({_pct(pendiente_pct, signo=True)} por mes), así que no hay apuro: compre cuando lo necesite.")
+    variacion_anual = None
+    if anio_pasado:
+        variacion_anual = (precios[-1] - anio_pasado["precio_cop"]) / anio_pasado["precio_cop"] * 100
+        porque += (f" Frente a {_mes_texto(hace_un_anio)} ({_pesos(anio_pasado['precio_cop'])}) está "
+                   f"{_pct(variacion_anual, signo=True)}.")
 
     return {
-        "insumo": historial[0]["insumo"],
-        "region": historial[0]["region"],
+        "insumo": ultimo["insumo"],
+        **_ubicacion(ultimo),
         "unidad": unidad,
-        "n_datos": len(precios),
-        "desde": historial[0]["fecha"],
-        "hasta": historial[-1]["fecha"],
+        "n_meses": len(recientes),
+        "desde": recientes[0]["periodo"],
+        "hasta": ultimo["periodo"],
         "precio_actual_cop": precios[-1],
-        "promedio_cop": round(promedio),
-        "variacion_total_pct": round(variacion_total, 2),
-        "variacion_ultima_semana_pct": round(variacion_semana, 2),
-        "pendiente_cop_semana": round(pendiente),
-        "pendiente_pct_semana": round(pendiente_pct, 2),
+        "precio_min_cop": ultimo["precio_min"],
+        "precio_max_cop": ultimo["precio_max"],
+        "n_municipios": ultimo["n_municipios"],
+        "promedio_6_meses_cop": round(promedio),
+        "variacion_6_meses_pct": round((precios[-1] - precios[0]) / precios[0] * 100, 2),
+        "variacion_vs_mes_anterior_pct": round(variacion_anterior, 2),
+        "mes_anterior_con_dato": anterior["periodo"],
+        "pendiente_cop_mes": round(pendiente),
+        "pendiente_pct_mes": round(pendiente_pct, 2),
+        "precio_mismo_mes_anio_anterior_cop": anio_pasado["precio_cop"] if anio_pasado else None,
+        "variacion_anual_pct": round(variacion_anual, 2) if anio_pasado else None,
         "recomendacion": recomendacion,
         "porque": porque,
-        "es_ejemplo": all(f["fuente"] == "ejemplo" for f in historial),
+        **_vigencia(ultimo["periodo"], publicado),
+        "fuente": f"DANE-SIPSA (mes publicado: {_mes_texto(publicado)})",
+        "es_ejemplo": any(f["fuente"] == "ejemplo" for f in historial),
     }
+
+
+def consultar_regiones_vecinas(insumo: str, region: str) -> dict:
+    """Último precio disponible del insumo en cada departamento VECINO que tenga datos,
+    del más barato al más caro. Sirve cuando en la región no hay datos (o son viejos)."""
+    producto = resolver_insumo(insumo)
+    if not producto:
+        return _error(f"No hay datos de '{insumo}': no está en el catálogo del DANE que usamos. "
+                      f"Insumos disponibles: {', '.join(NOMBRES_CORTOS.values())}.", "sin_datos")
+    departamento = resolver_departamento(region)
+    if not departamento:
+        return _error(f"'{region}' no es un departamento de Colombia (ej: Santander, Boyacá, Meta).",
+                      "validacion")
+    vecinos = VECINOS[departamento]
+    if not vecinos:
+        return _error(f"{departamento} no tiene departamentos vecinos por tierra.", "sin_datos")
+    corto = NOMBRES_CORTOS[producto]
+    try:
+        publicado = ultimo_periodo_disponible(config.RUTA_BD)
+        opciones = ultimo_precio_por_departamento(config.RUTA_BD, producto, vecinos)
+        propio = ultimo_precio_por_departamento(config.RUTA_BD, producto, [departamento])
+        if not opciones:
+            otros = regiones_disponibles(config.RUTA_BD, producto)
+            return _error(f"Ningún vecino de {departamento} ({', '.join(vecinos)}) tiene datos de {corto}. "
+                          f"Departamentos con datos de {corto}: {', '.join(otros) or 'ninguno'}.", "sin_datos")
+    except BaseDeDatosNoEncontrada as e:
+        return _error(str(e), "config")
+    except sqlite3.Error as e:
+        return _error(f"No se pudo leer la base de datos de precios ({e}). "
+                      "Actualízala con: python scripts/actualizar_sipsa.py", "config")
+
+    # Primero los vecinos con dato vigente (del más barato al más caro) y al final los de
+    # dato viejo: un precio de hace un año "más barato" engañaría al productor.
+    vigentes = sorted(({**o, **_vigencia(o["periodo"], publicado)} for o in opciones),
+                      key=lambda o: (o["dato_desactualizado"], o["precio_cop"]))
+    con_datos = {o["region"] for o in opciones}
+    return {
+        "insumo": producto,
+        "region": departamento,
+        "unidad": f"bulto de {PRESENTACIONES[producto]}",
+        "precio_en_la_region": ({**propio[0], **_vigencia(propio[0]["periodo"], publicado)}
+                                if propio else None),
+        "mas_barato_vigente": next((o for o in vigentes if not o["dato_desactualizado"]), None),
+        "vecinos": vigentes,
+        "vecinos_sin_datos": [v for v in vecinos if v not in con_datos],
+        "fuente": f"DANE-SIPSA (mes publicado: {_mes_texto(publicado)})",
+        "es_ejemplo": False,
+    }
+
+
+def calcular_costo_compra(insumo: str, region: str, bultos: int, municipio: str | None = None) -> dict:
+    """Costo total de comprar N bultos al último precio real (promedio del departamento,
+    o del municipio si se indica), con el rango según el municipio."""
+    if isinstance(bultos, bool) or not isinstance(bultos, int) or bultos <= 0:
+        return _error("La cantidad de bultos debe ser un número entero mayor a 0.", "validacion")
+    resultado = _historial_o_error(insumo, region, municipio)
+    if isinstance(resultado, dict):
+        return resultado
+    historial, publicado = resultado
+    ultimo = historial[-1]
+    referencia = _referencia_departamento(ultimo, publicado)
+    if referencia:  # el total también al precio reciente del departamento: el LLM no multiplica
+        ref = referencia["referencia_departamento"]
+        ref.update(total_cop=ref["precio_cop"] * bultos, total_min_cop=ref["precio_min"] * bultos,
+                   total_max_cop=ref["precio_max"] * bultos)
+    return {
+        "insumo": ultimo["insumo"],
+        **_ubicacion(ultimo),
+        "unidad": ultimo["unidad"],
+        "bultos": bultos,
+        "periodo_precio": ultimo["periodo"],
+        "precio_unitario_cop": ultimo["precio_cop"],
+        "total_cop": ultimo["precio_cop"] * bultos,
+        "total_min_cop": ultimo["precio_min"] * bultos,
+        "total_max_cop": ultimo["precio_max"] * bultos,
+        "n_municipios": ultimo["n_municipios"],
+        **_vigencia(ultimo["periodo"], publicado),
+        **referencia,
+        "fuente": f"DANE-SIPSA (mes publicado: {_mes_texto(publicado)})",
+        "es_ejemplo": any(f["fuente"] == "ejemplo" for f in historial),
+    }
+
 
 
 def _get_con_reintento(url: str, params: dict, reintentos: int = 1) -> requests.Response:
@@ -245,32 +447,19 @@ def enviar_alerta(mensaje: str, chat_id: str | None = None) -> dict:
     return {"enviado": True, "chat_id": str(destino),
             "message_id": datos.get("result", {}).get("message_id")}
 
-def calcular_costo_compra(insumo: str, region: str, bultos: int)->dict:
-    """costo total  de comprar N bultos al ultimo precio registrado"""
-    if not isinstance(bultos, int) or bultos <= 0:
-        return _error("la cantidad de bultos debe ser mayor a 0","validacion")
-
-    historial = _historial_o_error(insumo, region)
-    if isinstance(historial, dict):
-        return historial
-
-    precio = historial[-1]["precio_cop"]
-    return {
-        "insumo": historial[0]["insumo"],
-        "region": historial[0]["region"],
-        "bultos": bultos,
-        "precio_unitario_cop": precio,
-        "total_cop": precio * bultos,
-        "es_ejemplo": all(f["fuente"] == "ejemplo" for f in historial)
-    }
 
 # ---------- 2. Esquemas (lo que "lee" el LLM) ----------
+_PROPIEDADES_LUGAR = {
+    "insumo": {"type": "string", "description": "Ej: urea, dap, kcl, 15-15-15, 10-20-20"},
+    "region": {"type": "string", "description": "DEPARTAMENTO de Colombia. Ej: Santander, Boyacá, Meta"},
+    "municipio": {"type": "string",
+                  "description": "Opcional. Municipio dentro del departamento (ej: Bucaramanga). "
+                                 "Úsalo solo si el usuario nombra un municipio."},
+}
+
 _PARAMS_INSUMO_REGION = {
     "type": "object",
-    "properties": {
-        "insumo": {"type": "string", "description": "Ej: urea, dap, kcl"},
-        "region": {"type": "string", "description": "Ej: Santander, Boyaca, Meta"},
-    },
+    "properties": _PROPIEDADES_LUGAR,
     "required": ["insumo", "region"],
 }
 
@@ -280,9 +469,10 @@ ESQUEMAS = [
         "function": {
             "name": "consultar_precios",
             "description": (
-                "Obtiene el historial semanal de precios (COP) de un insumo agrícola "
-                "en una región de Colombia. Úsala siempre antes de hablar de precios. "
-                "Si no hay datos, el error trae las regiones o insumos que sí existen."
+                "Precios REALES del DANE (SIPSA) de un insumo agrícola en un departamento de Colombia "
+                "(o en un municipio): últimos 12 meses, mensuales. Trae el último mes con dato, el "
+                "precio promedio entre municipios, el rango min-max y si el dato está desactualizado. "
+                "Si no hay datos, el error trae los municipios o departamentos que sí tienen."
             ),
             "parameters": _PARAMS_INSUMO_REGION,
         },
@@ -292,11 +482,47 @@ ESQUEMAS = [
         "function": {
             "name": "analizar_tendencia",
             "description": (
-                "Analiza el historial de precios de un insumo en una región: variación total, "
-                "variación de la última semana, promedio, pendiente semanal y una recomendación "
-                "'comprar_ya', 'esperar' o 'neutral' con su porqué. Úsala antes de recomendar."
+                "Analiza la tendencia MENSUAL del precio de un insumo en un departamento: pendiente "
+                "de los últimos 6 meses (% por mes), variación contra el mes anterior y contra el "
+                "mismo mes del año pasado, y una recomendación 'comprar_ya', 'esperar' o 'neutral' "
+                "con su porqué. Úsala cuando pregunten si comprar ahora o esperar."
             ),
             "parameters": _PARAMS_INSUMO_REGION,
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "consultar_regiones_vecinas",
+            "description": (
+                "Último precio disponible de un insumo en los departamentos VECINOS de una región, "
+                "del más barato al más caro. Úsala cuando en la región no hay datos o el dato está "
+                "desactualizado, para ofrecer la alternativa más cercana y barata."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {k: _PROPIEDADES_LUGAR[k] for k in ("insumo", "region")},
+                "required": ["insumo", "region"],
+            },
+        },
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "calcular_costo_compra",
+            "description": (
+                "Calcula cuánto cuestan N bultos de un insumo en un departamento (o municipio) al "
+                "último precio real del DANE, con el rango según el municipio. Úsala cuando "
+                "pregunten cuánto van a gastar en total."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    **_PROPIEDADES_LUGAR,
+                    "bultos": {"type": "integer", "description": "Número de bultos a comprar (mayor a 0)"},
+                },
+                "required": ["insumo", "region", "bultos"],
+            },
         },
     },
     {
@@ -306,7 +532,8 @@ ESQUEMAS = [
             "description": (
                 "Consulta la TRM (dólar oficial en Colombia) de los últimos días en datos.gov.co: "
                 "valor actual y variación de la semana. Los fertilizantes son importados, así que "
-                "un dólar al alza suele empujar sus precios hacia arriba."
+                "un dólar al alza suele empujar sus precios hacia arriba. Úsala solo para decidir "
+                "si comprar ahora o esperar, no para preguntas de cuánto cuesta algo."
             ),
             "parameters": {"type": "object", "properties": {}},
         },
@@ -331,33 +558,16 @@ ESQUEMAS = [
             },
         },
     },
-    {
-        "type": "function",
-        "function": {
-            "name": "calcular_costo_compra",
-            "description": (
-                "calcula cuanto cuestan N bultos de un insumo en una region al precio actual. "
-                "Usalo cuando pregunten cuanto van a gastar en total"
-            ),
-            "parameters": {
-                "type": "object",
-                "properties": {
-                    **_PARAMS_INSUMO_REGION["properties"],
-                    "bultos" : {"type": "integer", "description": "numero de bultos a comprar(mayor a 0)"}, 
-                },
-                "required" : ["insumo", "region", "bultos"],
-            }
-        }
-    },
 ]
 
 # ---------- 3. Registro: nombre -> función ----------
 REGISTRO = {
     "consultar_precios": consultar_precios,
     "analizar_tendencia": analizar_tendencia,
+    "consultar_regiones_vecinas": consultar_regiones_vecinas,
+    "calcular_costo_compra": calcular_costo_compra,
     "consultar_trm": consultar_trm,
     "enviar_alerta": enviar_alerta,
-    "calcular_costo_compra": calcular_costo_compra,
 }
 
 

@@ -70,7 +70,7 @@ except SystemExit as e:  # validar_config() avisa así cuando falta algo en el .
     st.stop()
 
 if not config.RUTA_BD.exists():
-    st.warning("No existe la base de datos de precios. Córrela con: `python scripts/cargar_bd.py`")
+    st.warning("No existe la base de datos de precios. Créala con: `python scripts/actualizar_sipsa.py`")
 
 # ---------- Barra lateral ----------
 if "mensajes" not in st.session_state:
@@ -93,7 +93,7 @@ with st.sidebar:
 
     if not (config.TELEGRAM_BOT_TOKEN and config.TELEGRAM_CHAT_ID):
         st.info("📲 Telegram no está configurado: el agente responderá, pero no podrá enviar alertas.")
-    st.caption("⚠️ Los precios actuales son de ejemplo (ficticios). "
+    st.caption("📊 Precios reales del DANE (SIPSA-Insumos), mensuales y con ~3 semanas de retraso. "
                "Cada pregunta se responde por separado: el agente no recuerda las anteriores.")
 
 # ---------- Chat ----------
