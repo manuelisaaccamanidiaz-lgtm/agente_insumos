@@ -1,17 +1,16 @@
 """
-Pruebas de las 4 herramientas SIN internet 🔌
-- La BD es una SQLite temporal (fixture `bd_temporal` en conftest.py).
+Pruebas de las herramientas SIN internet 🔌
+- La BD es una SQLite temporal cargada con el ETL desde un Excel falso (conftest.py).
+  Precios FICTICIOS de data/precios_ejemplo.csv; último mes publicado: septiembre 2026.
 - Las APIs (TRM y Telegram) se reemplazan con unittest.mock: nunca sale una petición real.
 """
-from contextlib import closing
 from unittest.mock import MagicMock, patch
 
 import requests
 
 from agente import config, herramientas
-from agente.datos import conectar, insertar_precios
-from agente.herramientas import analizar_tendencia, consultar_precios, consultar_trm, enviar_alerta
-from scripts.cargar_bd import cargar
+from agente.herramientas import (analizar_tendencia, calcular_costo_compra, consultar_precios,
+                                 consultar_regiones_vecinas, consultar_trm, enviar_alerta)
 
 
 def _respuesta(json_data=None, status=200, json_error=None):
@@ -25,30 +24,63 @@ def _respuesta(json_data=None, status=200, json_error=None):
 
 
 # ---------- Base de datos ----------
-def test_cargar_bd_es_idempotente(tmp_path):
-    ruta = tmp_path / "otra.db"
-    assert cargar(config.RUTA_PRECIOS, ruta) == (28, 28)
-    assert cargar(config.RUTA_PRECIOS, ruta) == (28, 0)  # segunda vez no duplica
-
-
 def test_bd_inexistente_da_error_config(monkeypatch, tmp_path):
     monkeypatch.setattr(config, "RUTA_BD", tmp_path / "no_existe.db")
-    r = consultar_precios("urea", "Santander")
-    assert r["tipo_error"] == "config"
-    assert "python scripts/cargar_bd.py" in r["error"]
+    for r in (consultar_precios("urea", "Santander"), consultar_regiones_vecinas("urea", "Boyacá"),
+              calcular_costo_compra("urea", "Santander", 1)):
+        assert r["tipo_error"] == "config"
+        assert "python scripts/actualizar_sipsa.py" in r["error"]
 
 
 # ---------- consultar_precios ----------
-def test_consultar_precios_ignora_tildes_y_marca_ejemplo():
-    r = consultar_precios("URÉA", " boyacá ")
-    assert r["region"] == "Boyaca" and r["es_ejemplo"] is True
-    assert [f["precio_cop"] for f in r["historial"]] == [185000, 184000, 180500, 177000]
+def test_consultar_precios_departamento_con_rango():
+    r = consultar_precios("URÉA", " santandér ")
+    assert r["insumo"] == "Urea 46%" and r["region"] == "Santander"
+    assert (r["precio_actual_cop"], r["precio_min_cop"], r["precio_max_cop"], r["n_municipios"]) == (163000, 160000, 166000, 2)
+    assert r["ultimo_periodo"] == "2026-09" and r["ultimo_mes"] == "septiembre 2026"
+    assert r["fuente"] == "DANE-SIPSA (mes publicado: septiembre 2026)"
+    assert r["es_ejemplo"] is False and r["dato_desactualizado"] is False
 
 
-def test_consultar_precios_sin_datos_sugiere_regiones():
+def test_consultar_precios_solo_ultimos_12_meses():
+    historial = consultar_precios("urea", "Santander")["historial"]
+    assert historial[0]["periodo"] >= "2025-10" and historial[-1]["periodo"] == "2026-09"  # 2025-09 ya no entra
+    assert set(historial[0]) == {"periodo", "precio_cop", "precio_min", "precio_max", "n_municipios"}
+
+
+def test_consultar_precios_por_municipio():
+    r = consultar_precios("dap", "Santander", municipio="BUCARAMANGA")
+    assert r["municipio"] == "Bucaramanga" and r["precio_actual_cop"] == 225000 and r["n_municipios"] == 1
+
+
+def test_consultar_precios_municipio_en_el_campo_region():
+    r = consultar_precios("dap", "Bucaramanga")  # el LLM puso el municipio como región
+    assert r["region"] == "Santander" and r["municipio"] == "Bucaramanga"
+
+
+def test_consultar_precios_dato_viejo_se_marca_desactualizado():
+    r = consultar_precios("urea", "Boyacá")
+    assert r["ultimo_periodo"] == "2026-02" and r["meses_de_atraso"] == 7
+    assert r["dato_desactualizado"] is True
+
+
+def test_municipio_desactualizado_trae_referencia_del_departamento():
+    r = consultar_precios("urea", "Santander", "Barbosa")
+    assert r["dato_desactualizado"] is True
+    ref = r["referencia_departamento"]
+    assert ref["periodo"] == "2026-09" and ref["precio_cop"] == 163000 and ref["dato_desactualizado"] is False
+
+
+def test_consultar_precios_sin_datos_sugiere_departamentos():
     r = consultar_precios("urea", "Nariño")
+    assert r["tipo_error"] == "sin_datos" and "septiembre 2026" in r["error"]
+    assert "Santander" in r["error"] and "Cundinamarca" in r["error"]
+
+
+def test_consultar_precios_municipio_sin_datos_sugiere_municipios():
+    r = consultar_precios("urea", "Santander", "San Gil")
     assert r["tipo_error"] == "sin_datos"
-    assert "Santander" in r["error"] and "Meta" in r["error"]
+    assert "Bucaramanga" in r["error"] and "Piedecuesta" in r["error"]
 
 
 def test_consultar_precios_insumo_inexistente_sugiere_insumos():
@@ -57,35 +89,125 @@ def test_consultar_precios_insumo_inexistente_sugiere_insumos():
     assert "urea" in r["error"] and "dap" in r["error"]
 
 
-# ---------- analizar_tendencia ----------
+def test_consultar_precios_region_inexistente():
+    assert consultar_precios("urea", "Narnia")["tipo_error"] == "validacion"
+
+
+# ---------- analizar_tendencia (mensual) ----------
 def test_tendencia_bajando_recomienda_esperar():
     r = analizar_tendencia("urea", "Santander")
     assert r["recomendacion"] == "esperar"
-    assert r["pendiente_cop_semana"] == -3650  # calculado a mano: Sxy=-18250, Sxx=5
-    assert r["variacion_total_pct"] == -6.04
-    assert r["variacion_ultima_semana_pct"] == -2.84
-    assert r["promedio_cop"] == 177125
-    assert "bajando" in r["porque"]
+    assert (r["desde"], r["hasta"], r["n_meses"]) == ("2026-04", "2026-09", 6)
+    assert (r["precio_actual_cop"], r["precio_min_cop"], r["precio_max_cop"]) == (163000, 160000, 166000)
+    # promedios mensuales: 182, 178, 174, 170, 166, 163 mil → Sxy = -67.500, Sxx = 17,5
+    assert r["pendiente_cop_mes"] == -3857
+    assert r["pendiente_pct_mes"] == -2.24
+    assert r["promedio_6_meses_cop"] == 172167
+    assert r["variacion_6_meses_pct"] == -10.44
+    assert r["variacion_vs_mes_anterior_pct"] == -1.81
+    assert "bajando" in r["porque"] and "por mes" in r["porque"]
+
+
+def test_tendencia_compara_con_el_mismo_mes_del_anio_anterior():
+    r = analizar_tendencia("urea", "Santander")
+    assert r["precio_mismo_mes_anio_anterior_cop"] == 152000  # sep-2025: (150 + 154) / 2 mil
+    assert r["variacion_anual_pct"] == 7.24
+    assert "septiembre 2025" in r["porque"]
+
+
+def test_tendencia_sin_mismo_mes_del_anio_anterior():
+    r = analizar_tendencia("dap", "Santander")
+    assert r["precio_mismo_mes_anio_anterior_cop"] is None and r["variacion_anual_pct"] is None
 
 
 def test_tendencia_subiendo_recomienda_comprar_ya():
-    assert analizar_tendencia("dap", "Santander")["recomendacion"] == "comprar_ya"
+    r = analizar_tendencia("dap", "Santander")
+    assert r["recomendacion"] == "comprar_ya" and r["pendiente_pct_mes"] == 2.35
 
 
 def test_tendencia_estable_es_neutral():
     assert analizar_tendencia("kcl", "Santander")["recomendacion"] == "neutral"
 
 
-def test_tendencia_con_un_solo_dato_da_error(bd_temporal):
-    with closing(conectar(bd_temporal)) as c:
-        insertar_precios(c, [{"fecha": "2026-10-05", "region": "Cauca", "insumo": "urea",
-                              "precio_cop": 175000, "unidad": "bulto 50 kg", "fuente": "ejemplo"}])
-    r = analizar_tendencia("urea", "Cauca")
+def test_tendencia_umbral_configurable(monkeypatch):
+    monkeypatch.setattr(config, "UMBRAL_PCT_MENSUAL", 3.0)
+    assert analizar_tendencia("urea", "Santander")["recomendacion"] == "neutral"
+
+
+def test_tendencia_con_un_solo_mes_da_error():
+    r = analizar_tendencia("urea", "Meta")
     assert r["tipo_error"] == "sin_datos" and "al menos 2" in r["error"]
 
 
 def test_tendencia_sin_datos():
     assert analizar_tendencia("glifosato", "Nariño")["tipo_error"] == "sin_datos"
+
+
+# ---------- consultar_regiones_vecinas ----------
+def test_vecinos_ordenados_del_mas_barato_al_mas_caro():
+    r = consultar_regiones_vecinas("urea", "boyaca")
+    assert r["region"] == "Boyacá"
+    regiones = [v["region"] for v in r["vecinos"]]
+    # Meta (150.000) es más barato pero NO es vecino de Boyacá
+    assert regiones == ["Cundinamarca", "Santander", "Norte de Santander", "Casanare"]
+    assert [v["precio_cop"] for v in r["vecinos"][:3]] == [158000, 163000, 170000]
+    assert r["vecinos"][0]["precio_min"] == 157000 and r["vecinos"][0]["precio_max"] == 159000
+
+
+def test_vecinos_con_dato_viejo_van_al_final():
+    r = consultar_regiones_vecinas("urea", "Boyacá")
+    casanare = r["vecinos"][-1]  # 130.000 es el más barato, pero de marzo 2025
+    assert casanare["region"] == "Casanare" and casanare["dato_desactualizado"] is True
+    assert r["mas_barato_vigente"]["region"] == "Cundinamarca"
+
+
+def test_vecinos_incluye_el_precio_de_la_region_y_los_que_no_tienen_datos():
+    r = consultar_regiones_vecinas("urea", "Boyacá")
+    assert r["precio_en_la_region"]["periodo"] == "2026-02"
+    assert set(r["vecinos_sin_datos"]) == {"Antioquia", "Arauca", "Caldas"}
+    assert r["es_ejemplo"] is False and "septiembre 2026" in r["fuente"]
+
+
+def test_vecinos_sin_datos():
+    r = consultar_regiones_vecinas("dap", "Nariño")  # vecinos: Cauca y Putumayo, sin DAP
+    assert r["tipo_error"] == "sin_datos"
+    assert "Cauca" in r["error"] and "Santander" in r["error"]  # dice dónde sí hay
+
+
+def test_vecinos_region_o_insumo_invalidos():
+    assert consultar_regiones_vecinas("urea", "Narnia")["tipo_error"] == "validacion"
+    assert consultar_regiones_vecinas("glifosato", "Boyacá")["tipo_error"] == "sin_datos"
+    assert consultar_regiones_vecinas("urea", "San Andrés")["tipo_error"] == "sin_datos"
+
+
+def test_vecinos_esta_registrada_para_el_llm():
+    nombres = [e["function"]["name"] for e in herramientas.ESQUEMAS]
+    assert "consultar_regiones_vecinas" in nombres
+    assert "consultar_regiones_vecinas" in herramientas.REGISTRO
+
+
+# ---------- calcular_costo_compra ----------
+def test_costo_usa_el_ultimo_precio_real():
+    r = calcular_costo_compra("DAP", "Bucaramanga", 10)
+    assert r["municipio"] == "Bucaramanga" and r["periodo_precio"] == "2026-09"
+    assert r["precio_unitario_cop"] == 225000 and r["total_cop"] == 2250000
+    assert r["es_ejemplo"] is False
+
+
+def test_costo_departamento_con_rango():
+    r = calcular_costo_compra("urea", "Santander", 2)
+    assert (r["total_cop"], r["total_min_cop"], r["total_max_cop"]) == (326000, 320000, 332000)
+
+
+def test_costo_municipio_desactualizado_trae_total_del_departamento():
+    r = calcular_costo_compra("urea", "Santander", 10, municipio="Barbosa")
+    assert r["total_cop"] == 1500000 and r["dato_desactualizado"] is True
+    assert r["referencia_departamento"]["total_cop"] == 1630000
+
+
+def test_costo_bultos_invalidos():
+    for malo in (0, -3, 2.5, "10", True):
+        assert calcular_costo_compra("urea", "Santander", malo)["tipo_error"] == "validacion"
 
 
 # ---------- consultar_trm ----------

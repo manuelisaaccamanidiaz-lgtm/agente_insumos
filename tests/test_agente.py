@@ -49,8 +49,8 @@ def _error_openai(clase):
 
 def test_herramienta_devuelve_historial():
     r = consultar_precios("Urea", "santander")  # mayúsculas/minúsculas no importan
-    assert len(r["historial"]) == 4
-    assert r["historial"][-1]["precio_cop"] == 171000
+    assert len(r["historial"]) == 7  # meses con datos dentro de los últimos 12
+    assert r["historial"][-1]["precio_cop"] == 163000
 
 
 def test_herramienta_sin_datos():
@@ -70,7 +70,7 @@ def test_ejecutar_argumentos_invalidos_no_rompe():
 def test_loop_end_to_end():
     llm = LLMFalso()
     salida = ejecutar_agente("¿Precio de la urea en Santander?", llm, "modelo-falso")
-    assert salida["respuesta"] == "La urea está en 171000 COP"
+    assert salida["respuesta"] == "La urea está en 163000 COP"
     assert salida["rastro"][0]["nombre"] == "consultar_precios"
     assert llm.llamadas == 2
 

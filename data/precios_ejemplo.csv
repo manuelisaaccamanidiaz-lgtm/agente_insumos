@@ -1,29 +1,40 @@
-fecha,region,insumo,precio_cop,unidad
-2026-09-14,Santander,urea,182000,bulto 50 kg
-2026-09-21,Santander,urea,179500,bulto 50 kg
-2026-09-28,Santander,urea,176000,bulto 50 kg
-2026-10-05,Santander,urea,171000,bulto 50 kg
-2026-09-14,Santander,dap,215000,bulto 50 kg
-2026-09-21,Santander,dap,217500,bulto 50 kg
-2026-09-28,Santander,dap,221000,bulto 50 kg
-2026-10-05,Santander,dap,226000,bulto 50 kg
-2026-09-14,Santander,kcl,158000,bulto 50 kg
-2026-09-21,Santander,kcl,158500,bulto 50 kg
-2026-09-28,Santander,kcl,157500,bulto 50 kg
-2026-10-05,Santander,kcl,158000,bulto 50 kg
-2026-09-14,Boyaca,urea,185000,bulto 50 kg
-2026-09-21,Boyaca,urea,184000,bulto 50 kg
-2026-09-28,Boyaca,urea,180500,bulto 50 kg
-2026-10-05,Boyaca,urea,177000,bulto 50 kg
-2026-09-14,Boyaca,dap,219000,bulto 50 kg
-2026-09-21,Boyaca,dap,220000,bulto 50 kg
-2026-09-28,Boyaca,dap,224500,bulto 50 kg
-2026-10-05,Boyaca,dap,229000,bulto 50 kg
-2026-09-14,Meta,urea,178000,bulto 50 kg
-2026-09-21,Meta,urea,176500,bulto 50 kg
-2026-09-28,Meta,urea,173000,bulto 50 kg
-2026-10-05,Meta,urea,169500,bulto 50 kg
-2026-09-14,Meta,kcl,154000,bulto 50 kg
-2026-09-21,Meta,kcl,155500,bulto 50 kg
-2026-09-28,Meta,kcl,156000,bulto 50 kg
-2026-10-05,Meta,kcl,157500,bulto 50 kg
+anio,mes,cod_departamento,departamento,cod_municipio,municipio,producto,presentacion,precio
+2024,Septiembre,68,Santander,68001,Bucaramanga,Urea 46%,50 kilogramos,140000
+2025,Septiembre,68,Santander,68001,Bucaramanga,Urea 46%,50 kilogramos,150000
+2025,Septiembre,68,Santander,68547,Piedecuesta,Urea 46%,50 kilogramos,154000
+2026,Abril,68,Santander,68001,Bucaramanga,Urea 46%,50 kilogramos,180000
+2026,Mayo,68,Santander,68001,Bucaramanga,Urea 46%,50 kilogramos,176000
+2026,Junio,68,Santander,68001,Bucaramanga,Urea 46%,50 kilogramos,172000
+2026,Julio,68,Santander,68001,Bucaramanga,Urea 46%,50 kilogramos,168000
+2026,Agosto,68,Santander,68001,Bucaramanga,Urea 46%,50 kilogramos,164000
+2026,Septiembre,68,Santander,68001,Bucaramanga,Urea 46%,50 kilogramos,160000
+2026,Abril,68,Santander,68547,Piedecuesta,Urea 46%,50 kilogramos,184000
+2026,Mayo,68,Santander,68547,Piedecuesta,Urea 46%,50 kilogramos,180000
+2026,Junio,68,Santander,68547,Piedecuesta,Urea 46%,50 kilogramos,176000
+2026,Julio,68,Santander,68547,Piedecuesta,Urea 46%,50 kilogramos,172000
+2026,Agosto,68,Santander,68547,Piedecuesta,Urea 46%,50 kilogramos,168000
+2026,Septiembre,68,Santander,68547,Piedecuesta,Urea 46%,50 kilogramos,166000
+2026,Abril,68,Santander,68001,Bucaramanga,Fosfato Diamónico (DAP) 18-46-0,50 kilogramos,200000
+2026,Mayo,68,Santander,68001,Bucaramanga,Fosfato Diamónico (DAP) 18-46-0,50 kilogramos,205000
+2026,Junio,68,Santander,68001,Bucaramanga,Fosfato Diamónico (DAP) 18-46-0,50 kilogramos,210000
+2026,Julio,68,Santander,68001,Bucaramanga,Fosfato Diamónico (DAP) 18-46-0,50 kilogramos,215000
+2026,Agosto,68,Santander,68001,Bucaramanga,Fosfato Diamónico (DAP) 18-46-0,50 kilogramos,220000
+2026,Septiembre,68,Santander,68001,Bucaramanga,Fosfato Diamónico (DAP) 18-46-0,50 kilogramos,225000
+2026,Abril,68,Santander,68001,Bucaramanga,Cloruro de Potasio 0-0-60,50 kilogramos,150000
+2026,Mayo,68,Santander,68001,Bucaramanga,Cloruro de Potasio 0-0-60,50 kilogramos,151000
+2026,Junio,68,Santander,68001,Bucaramanga,Cloruro de Potasio 0-0-60,50 kilogramos,150000
+2026,Julio,68,Santander,68001,Bucaramanga,Cloruro de Potasio 0-0-60,50 kilogramos,150500
+2026,Agosto,68,Santander,68001,Bucaramanga,Cloruro de Potasio 0-0-60,50 kilogramos,151000
+2026,Septiembre,68,Santander,68001,Bucaramanga,Cloruro de Potasio 0-0-60,50 kilogramos,150000
+2026,Septiembre,68,Santander,68001,Bucaramanga,Crecer 500,900 gramos,30000
+2026,Septiembre,68,Santander,68001,Bucaramanga,10-30-10,1 litro,25000
+2026,Enero,15,Boyacá,15001,Tunja,Urea 46%,50 kilogramos,135000
+2026,Febrero,15,Boyacá,15001,Tunja,Urea 46%,50 kilogramos,136000
+2026,Septiembre,15,Boyacá,15001,Tunja,15-15-15,50 kilogramos,120000
+2026,Agosto,25,Cundinamarca,25290,Fusagasugá,Urea 46%,50 kilogramos,158000
+2026,Septiembre,25,Cundinamarca,25290,Fusagasugá,Urea 46%,50 kilogramos,157000
+2026,Septiembre,25,Cundinamarca,25899,Zipaquirá,Urea 46%,50 kilogramos,159000
+2026,Septiembre,54,Norte de Santander,54001,San José de Cúcuta,Urea 46%,50 kilogramos,170000
+2025,Marzo,85,Casanare,85001,Yopal,Urea 46%,50 kilogramos,130000
+2026,Septiembre,50,Meta,50001,Villavicencio,Urea 46%,50 kilogramos,150000
+2026,Enero,68,Santander,68077,Barbosa,Urea 46%,50 kilogramos,150000
