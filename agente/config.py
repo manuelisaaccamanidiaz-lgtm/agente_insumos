@@ -22,11 +22,34 @@ XAI_API_KEY = os.getenv("XAI_API_KEY", "")
 XAI_BASE_URL = os.getenv("XAI_BASE_URL", "https://api.x.ai/v1")
 GROK_MODEL = os.getenv("GROK_MODEL", "")  # ej: el modelo que veas en console.x.ai
 
-# CSV de precios de EJEMPLO: solo lo lee scripts/cargar_bd.py para llenar la BD
+# CSV de precios de EJEMPLO (ficticios): SOLO lo usan las pruebas para armar un Excel falso
 RUTA_PRECIOS = Path(os.getenv("RUTA_PRECIOS") or RAIZ / "data" / "precios_ejemplo.csv")
 
-# Base de datos SQLite que consulta el agente (se crea con: python scripts/cargar_bd.py)
+# Base de datos SQLite que consulta el agente (se llena con: python scripts/actualizar_sipsa.py)
 RUTA_BD = Path(os.getenv("RUTA_BD") or RAIZ / "data" / "insumos.db")
+
+# ---------- S3 · Datos reales del DANE (SIPSA-Insumos) ----------
+# Serie histórica MENSUAL de precios por municipio. ⚠️ El año final del nombre cambia cada
+# año (…2021-2026.xlsx → …2021-2027.xlsx): si la descarga da 404, actualiza SIPSA_URL.
+SIPSA_URL = os.getenv("SIPSA_URL") or (
+    "https://www.dane.gov.co/files/operaciones/SIPSA/anex-SIPSAInsumos-SeriesHistoricasMun-2021-2026.xlsx"
+)
+# Copia local del Excel: data/<mismo nombre del archivo de la URL>
+RUTA_SIPSA = Path(os.getenv("RUTA_SIPSA") or RAIZ / "data" / SIPSA_URL.rstrip("/").rsplit("/", 1)[-1])
+# Si la copia local tiene más de estos días, el script la vuelve a descargar
+DIAS_ACTUALIZAR_SIPSA = int(os.getenv("DIAS_ACTUALIZAR_SIPSA", "30"))
+# Hojas del Excel a leer (1.3 = Fertilizantes, enmiendas y acondicionadores de suelo)
+HOJAS_SIPSA = [h.strip() for h in os.getenv("HOJAS_SIPSA", "1.3").split(",") if h.strip()]
+# Años que se guardan: el último año con datos y los anteriores hasta completar N
+ANIOS_HISTORIA = int(os.getenv("ANIOS_HISTORIA", "2"))
+# Segundos máximos de espera por cada pedazo de la descarga del Excel (~64 MB)
+TIMEOUT_DESCARGA = float(os.getenv("TIMEOUT_DESCARGA", "60"))
+
+# Recomendación: cambio mensual (pendiente / promedio) que consideramos "real"
+UMBRAL_PCT_MENSUAL = float(os.getenv("UMBRAL_PCT_MENSUAL", "2"))
+# Un departamento cuyo último dato tiene más de estos meses de atraso frente al último
+# mes publicado se marca como "dato_desactualizado" (el agente busca vecinos)
+MESES_DATO_VIGENTE = int(os.getenv("MESES_DATO_VIGENTE", "3"))
 
 # API pública de la TRM (dólar oficial) en datos abiertos de Colombia
 TRM_API_URL = os.getenv("TRM_API_URL") or "https://www.datos.gov.co/resource/32sa-8pi3.json"

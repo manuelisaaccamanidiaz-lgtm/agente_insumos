@@ -5,3 +5,5 @@ __pycache__/
 .pytest_cache/
 logs/*.json
 data/insumos.db
+data/*.xlsx
+data/*.xlsx.part
