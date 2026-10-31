@@ -7,3 +7,5 @@ logs/*.json
 data/insumos.db
 data/*.xlsx
 data/*.xlsx.part
+# Reportes de evaluación (el último .md completo se copia a docs/evaluacion.md)
+reportes/
