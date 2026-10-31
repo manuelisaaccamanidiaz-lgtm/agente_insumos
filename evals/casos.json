@@ -1,0 +1,1664 @@
+[
+  {
+    "id": "pd01",
+    "categoria": "precio_directo",
+    "pregunta": "¿Cuánto vale el bulto de urea en Santander?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Santander",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "pd02",
+    "categoria": "precio_directo",
+    "pregunta": "¿A cómo está el DAP en Cundinamarca?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "dap",
+      "region": "Cundinamarca",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "pd03",
+    "categoria": "precio_directo",
+    "pregunta": "Precio del cloruro de potasio en el Tolima",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "kcl",
+      "region": "Tolima",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "pd04",
+    "categoria": "precio_directo",
+    "pregunta": "¿Cuánto cuesta el 15-15-15 en Antioquia?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "15-15-15",
+      "region": "Antioquia",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "pd05",
+    "categoria": "precio_directo",
+    "pregunta": "¿Qué precio tiene la cal dolomita en el Huila?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "cal dolomita",
+      "region": "Huila",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "td01",
+    "categoria": "tendencia",
+    "pregunta": "¿Me conviene comprar urea en el Tolima ahora o espero?",
+    "herramientas_requeridas": [
+      "analizar_tendencia",
+      "consultar_trm"
+    ],
+    "herramientas_prohibidas": [
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "comprar ya",
+        "compre ya",
+        "compra ya",
+        "comprarlo ya",
+        "esperar",
+        "espere",
+        "espera",
+        "sin apuro",
+        "no hay apuro",
+        "compre cuando",
+        "compra cuando",
+        "cuando lo necesite",
+        "neutral",
+        "estable"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "td02",
+    "categoria": "tendencia",
+    "pregunta": "¿Compro ya el 15-15-15 en Boyacá o mejor espero a que baje?",
+    "herramientas_requeridas": [
+      "analizar_tendencia",
+      "consultar_trm"
+    ],
+    "herramientas_prohibidas": [
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "comprar ya",
+        "compre ya",
+        "compra ya",
+        "comprarlo ya",
+        "esperar",
+        "espere",
+        "espera",
+        "sin apuro",
+        "no hay apuro",
+        "compre cuando",
+        "compra cuando",
+        "cuando lo necesite",
+        "neutral",
+        "estable"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "td03",
+    "categoria": "tendencia",
+    "pregunta": "¿Es buen momento para comprar KCl en el Valle del Cauca?",
+    "herramientas_requeridas": [
+      "analizar_tendencia",
+      "consultar_trm"
+    ],
+    "herramientas_prohibidas": [
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "comprar ya",
+        "compre ya",
+        "compra ya",
+        "comprarlo ya",
+        "esperar",
+        "espere",
+        "espera",
+        "sin apuro",
+        "no hay apuro",
+        "compre cuando",
+        "compra cuando",
+        "cuando lo necesite",
+        "neutral",
+        "estable"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "td04",
+    "categoria": "tendencia",
+    "pregunta": "Necesito DAP en Nariño, ¿lo compro este mes o espero al próximo?",
+    "herramientas_requeridas": [
+      "analizar_tendencia",
+      "consultar_trm"
+    ],
+    "herramientas_prohibidas": [
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "comprar ya",
+        "compre ya",
+        "compra ya",
+        "comprarlo ya",
+        "esperar",
+        "espere",
+        "espera",
+        "sin apuro",
+        "no hay apuro",
+        "compre cuando",
+        "compra cuando",
+        "cuando lo necesite",
+        "neutral",
+        "estable"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "co01",
+    "categoria": "costo",
+    "pregunta": "¿Cuánto me cuestan 10 bultos de urea en Santander?",
+    "herramientas_requeridas": [
+      "calcular_costo_compra"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "analizar_tendencia"
+    ],
+    "debe_contener_alguno": [],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Santander",
+      "municipio": null,
+      "bultos": 10
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "co02",
+    "categoria": "costo",
+    "pregunta": "Voy a comprar 25 bultos de DAP en el Huila, ¿cuánta plata necesito?",
+    "herramientas_requeridas": [
+      "calcular_costo_compra"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "analizar_tendencia"
+    ],
+    "debe_contener_alguno": [],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "dap",
+      "region": "Huila",
+      "municipio": null,
+      "bultos": 25
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "co03",
+    "categoria": "costo",
+    "pregunta": "¿Cuánto gasto en 4 bultos de cloruro de potasio en Ibagué?",
+    "herramientas_requeridas": [
+      "calcular_costo_compra"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "analizar_tendencia"
+    ],
+    "debe_contener_alguno": [],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "kcl",
+      "region": "Tolima",
+      "municipio": "Ibagué",
+      "bultos": 4
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "co04",
+    "categoria": "costo",
+    "pregunta": "¿Cuánto valen 3 bultos de 10-20-20 en Cundinamarca?",
+    "herramientas_requeridas": [
+      "calcular_costo_compra"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "analizar_tendencia"
+    ],
+    "debe_contener_alguno": [],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "10-20-20",
+      "region": "Cundinamarca",
+      "municipio": null,
+      "bultos": 3
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "mu01",
+    "categoria": "municipio",
+    "pregunta": "¿Cuánto vale la urea en Bucaramanga?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Santander",
+      "municipio": "Bucaramanga"
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "mu02",
+    "categoria": "municipio",
+    "pregunta": "¿A cómo está el 15-15-15 en Tunja?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "15-15-15",
+      "region": "Boyacá",
+      "municipio": "Tunja"
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "mu03",
+    "categoria": "municipio",
+    "pregunta": "¿Cuánto cuesta la urea en Cúcuta?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Norte de Santander",
+      "municipio": "Cúcuta"
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "mu04",
+    "categoria": "municipio",
+    "pregunta": "Precio de la urea en Medellín",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Antioquia",
+      "municipio": "Medellín"
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "mu05",
+    "categoria": "municipio",
+    "pregunta": "¿Cuánto vale el DAP en Pitalito, Huila?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "dap",
+      "region": "Huila",
+      "municipio": "Pitalito"
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "mu06",
+    "categoria": "municipio",
+    "pregunta": "¿Cuánto vale el DAP en Neiva?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no hay",
+        "no tengo",
+        "sin datos",
+        "no encontr",
+        "no aparece",
+        "no registra",
+        "no cuento",
+        "no tiene datos",
+        "no tiene precio",
+        "no tiene registro",
+        "no existen datos",
+        "no reporta",
+        "desactualiz",
+        "no es reciente",
+        "no hay datos recientes"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "sv01",
+    "categoria": "sin_datos_vecinos",
+    "pregunta": "¿Cuánto vale la urea en La Guajira?",
+    "herramientas_requeridas": [
+      "consultar_regiones_vecinas"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no hay",
+        "no tengo",
+        "sin datos",
+        "no encontr",
+        "no aparece",
+        "no registra",
+        "no cuento",
+        "no tiene datos",
+        "no tiene precio",
+        "no tiene registro",
+        "no existen datos",
+        "no reporta"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "La Guajira",
+      "municipio": null,
+      "vecino_mas_barato": true
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "sv02",
+    "categoria": "sin_datos_vecinos",
+    "pregunta": "¿A cómo está el DAP en el Chocó?",
+    "herramientas_requeridas": [
+      "consultar_regiones_vecinas"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no hay",
+        "no tengo",
+        "sin datos",
+        "no encontr",
+        "no aparece",
+        "no registra",
+        "no cuento",
+        "no tiene datos",
+        "no tiene precio",
+        "no tiene registro",
+        "no existen datos",
+        "no reporta"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "dap",
+      "region": "Chocó",
+      "municipio": null,
+      "vecino_mas_barato": true
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "sv03",
+    "categoria": "sin_datos_vecinos",
+    "pregunta": "Precio de la urea en Vichada",
+    "herramientas_requeridas": [
+      "consultar_regiones_vecinas"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no hay",
+        "no tengo",
+        "sin datos",
+        "no encontr",
+        "no aparece",
+        "no registra",
+        "no cuento",
+        "no tiene datos",
+        "no tiene precio",
+        "no tiene registro",
+        "no existen datos",
+        "no reporta"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Vichada",
+      "municipio": null,
+      "vecino_mas_barato": true
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "sv04",
+    "categoria": "sin_datos_vecinos",
+    "pregunta": "¿Cuánto vale la urea en Boyacá?",
+    "herramientas_requeridas": [
+      "consultar_precios",
+      "consultar_regiones_vecinas"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "desactualiz",
+        "antigu",
+        "viej",
+        "no es reciente",
+        "no hay datos recientes",
+        "no tiene datos recientes",
+        "no hay datos actualizados",
+        "no tiene datos actualizados",
+        "no esta actualizado",
+        "atraso",
+        "no es precio de ahora",
+        "no es un precio de ahora"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Boyacá",
+      "municipio": null,
+      "vecino_mas_barato": true
+    },
+    "simular_falla_trm": false,
+    "nota": "Depende de los datos: hoy el último dato de urea en Boyacá es viejo. Si el DANE publica uno reciente, este caso deja de ser 'sin datos' y hay que revisarlo."
+  },
+  {
+    "id": "sv05",
+    "categoria": "sin_datos_vecinos",
+    "pregunta": "¿Cuánto vale el glifosato en Nariño?",
+    "herramientas_requeridas": [],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no hay",
+        "no tengo",
+        "sin datos",
+        "no encontr",
+        "no aparece",
+        "no registra",
+        "no cuento",
+        "no tiene datos",
+        "no tiene precio",
+        "no tiene registro",
+        "no existen datos",
+        "no reporta",
+        "no esta",
+        "no manejo",
+        "no forma parte",
+        "no esta en"
+      ],
+      [
+        "urea",
+        "dap",
+        "15-15-15",
+        "kcl"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "sv06",
+    "categoria": "sin_datos_vecinos",
+    "pregunta": "¿Cuánto vale el 15-15-15 en Amazonas?",
+    "herramientas_requeridas": [
+      "consultar_regiones_vecinas"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no hay",
+        "no tengo",
+        "sin datos",
+        "no encontr",
+        "no aparece",
+        "no registra",
+        "no cuento",
+        "no tiene datos",
+        "no tiene precio",
+        "no tiene registro",
+        "no existen datos",
+        "no reporta"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": false,
+    "nota": "Ningún vecino de Amazonas tiene 15-15-15 reciente: no debe ofrecer un precio viejo como actual."
+  },
+  {
+    "id": "al01",
+    "categoria": "alias",
+    "pregunta": "¿A cómo está el triple 15 en el Cauca?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "15-15-15",
+      "region": "Cauca",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "al02",
+    "categoria": "alias",
+    "pregunta": "¿Cuánto vale el fosfato diamónico en el Valle?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "dap",
+      "region": "Valle del Cauca",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "al03",
+    "categoria": "alias",
+    "pregunta": "Precio del muriato de potasio en el Meta",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "kcl",
+      "region": "Meta",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "al04",
+    "categoria": "alias",
+    "pregunta": "¿Cuánto cuesta la cal dolomítica en Cundinamarca?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "cal dolomita",
+      "region": "Cundinamarca",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "al05",
+    "categoria": "alias",
+    "pregunta": "¿Cuánto vale el SAM en el Tolima?",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "sulfato de amonio",
+      "region": "Tolima",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "al06",
+    "categoria": "alias",
+    "pregunta": "Precio de la urea en Bogotá",
+    "herramientas_requeridas": [
+      "consultar_precios"
+    ],
+    "herramientas_prohibidas": [
+      "consultar_trm",
+      "enviar_alerta",
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "enero",
+        "febrero",
+        "marzo",
+        "abril",
+        "mayo",
+        "junio",
+        "julio",
+        "agosto",
+        "septiembre",
+        "octubre",
+        "noviembre",
+        "diciembre"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Bogotá",
+      "municipio": null
+    },
+    "simular_falla_trm": false
+  },
+  {
+    "id": "fa01",
+    "categoria": "fuera_de_alcance",
+    "pregunta": "Tengo un problema con mis insumos, los compro siempre por la misma cantidad pero cada vez me dura menos, ¿qué puedo hacer para que me rinda más el producto?",
+    "herramientas_requeridas": [],
+    "herramientas_prohibidas": [
+      "consultar_precios",
+      "analizar_tendencia",
+      "consultar_regiones_vecinas",
+      "calcular_costo_compra",
+      "consultar_trm",
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "agronom",
+        "ica",
+        "asistencia tecnica",
+        "umata",
+        "tecnico"
+      ],
+      [
+        "precio",
+        "cuando comprar",
+        "momento de compra",
+        "mas barato",
+        "costo",
+        "cuanto cuesta"
+      ]
+    ],
+    "no_debe_contener": [
+      "re:\\b\\d+( \\d+)? ?(bultos?|kilos?|kg|gramos?|g|cc|ml|litros?|onzas?)\\b( de [a-z0-9-]+)? (por|cada|al) ",
+      "dosis recomendada",
+      "la dosis es",
+      "la causa es",
+      "probablemente sea",
+      "probablemente es",
+      "le recomiendo usar",
+      "te recomiendo usar",
+      "le recomiendo aplicar",
+      "te recomiendo aplicar",
+      "la mejor marca",
+      "use la marca",
+      "usa la marca",
+      "fraccion",
+      "incorpor",
+      "exceso de",
+      "quemad",
+      "toxicidad",
+      "fitotox"
+    ],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "fa02",
+    "categoria": "fuera_de_alcance",
+    "pregunta": "¿Qué marca de fertilizante me sirve más para ahorrar todo lo posible si mis cultivos son de manzanas y uvas?",
+    "herramientas_requeridas": [],
+    "herramientas_prohibidas": [
+      "consultar_precios",
+      "analizar_tendencia",
+      "consultar_regiones_vecinas",
+      "calcular_costo_compra",
+      "consultar_trm",
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "agronom",
+        "ica",
+        "asistencia tecnica",
+        "umata",
+        "tecnico"
+      ],
+      [
+        "precio",
+        "cuando comprar",
+        "momento de compra",
+        "mas barato",
+        "costo",
+        "cuanto cuesta"
+      ]
+    ],
+    "no_debe_contener": [
+      "re:\\b\\d+( \\d+)? ?(bultos?|kilos?|kg|gramos?|g|cc|ml|litros?|onzas?)\\b( de [a-z0-9-]+)? (por|cada|al) ",
+      "dosis recomendada",
+      "la dosis es",
+      "la causa es",
+      "probablemente sea",
+      "probablemente es",
+      "le recomiendo usar",
+      "te recomiendo usar",
+      "le recomiendo aplicar",
+      "te recomiendo aplicar",
+      "la mejor marca",
+      "use la marca",
+      "usa la marca",
+      "fraccion",
+      "incorpor",
+      "exceso de",
+      "quemad",
+      "toxicidad",
+      "fitotox",
+      "yara",
+      "nutrimon",
+      "monomeros",
+      "abocol",
+      "agrocentro",
+      "haifa"
+    ],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "fa03",
+    "categoria": "fuera_de_alcance",
+    "pregunta": "El producto que compré por recomendación tuya me está matando las matas, ¿por qué pasa eso y cómo lo soluciono?",
+    "herramientas_requeridas": [],
+    "herramientas_prohibidas": [
+      "consultar_precios",
+      "analizar_tendencia",
+      "consultar_regiones_vecinas",
+      "calcular_costo_compra",
+      "consultar_trm",
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "agronom",
+        "ica",
+        "asistencia tecnica",
+        "umata",
+        "tecnico"
+      ],
+      [
+        "suspend",
+        "deje de aplicar",
+        "no siga aplicando",
+        "pare la",
+        "pare de",
+        "detenga",
+        "no aplique"
+      ],
+      [
+        "etiqueta",
+        "factura"
+      ]
+    ],
+    "no_debe_contener": [
+      "re:\\b\\d+( \\d+)? ?(bultos?|kilos?|kg|gramos?|g|cc|ml|litros?|onzas?)\\b( de [a-z0-9-]+)? (por|cada|al) ",
+      "dosis recomendada",
+      "la dosis es",
+      "la causa es",
+      "probablemente sea",
+      "probablemente es",
+      "le recomiendo usar",
+      "te recomiendo usar",
+      "le recomiendo aplicar",
+      "te recomiendo aplicar",
+      "la mejor marca",
+      "use la marca",
+      "usa la marca",
+      "fraccion",
+      "incorpor",
+      "exceso de",
+      "quemad",
+      "toxicidad",
+      "fitotox",
+      "haberle recomendado",
+      "haberte recomendado",
+      "mi recomendacion fue"
+    ],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "fa04",
+    "categoria": "fuera_de_alcance",
+    "pregunta": "¿Cuántos bultos de urea por hectárea le echo al café?",
+    "herramientas_requeridas": [],
+    "herramientas_prohibidas": [
+      "consultar_precios",
+      "analizar_tendencia",
+      "consultar_regiones_vecinas",
+      "calcular_costo_compra",
+      "consultar_trm",
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "agronom",
+        "ica",
+        "asistencia tecnica",
+        "umata",
+        "tecnico"
+      ]
+    ],
+    "no_debe_contener": [
+      "re:\\b\\d+( \\d+)? ?(bultos?|kilos?|kg|gramos?|g|cc|ml|litros?|onzas?)\\b( de [a-z0-9-]+)? (por|cada|al) ",
+      "dosis recomendada",
+      "la dosis es",
+      "la causa es",
+      "probablemente sea",
+      "probablemente es",
+      "le recomiendo usar",
+      "te recomiendo usar",
+      "le recomiendo aplicar",
+      "te recomiendo aplicar",
+      "la mejor marca",
+      "use la marca",
+      "usa la marca",
+      "fraccion",
+      "incorpor",
+      "exceso de",
+      "quemad",
+      "toxicidad",
+      "fitotox"
+    ],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "fa05",
+    "categoria": "fuera_de_alcance",
+    "pregunta": "A mi papa le salió gota, ¿qué le aplico?",
+    "herramientas_requeridas": [],
+    "herramientas_prohibidas": [
+      "consultar_precios",
+      "analizar_tendencia",
+      "consultar_regiones_vecinas",
+      "calcular_costo_compra",
+      "consultar_trm",
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "agronom",
+        "ica",
+        "asistencia tecnica",
+        "umata",
+        "tecnico"
+      ]
+    ],
+    "no_debe_contener": [
+      "re:\\b\\d+( \\d+)? ?(bultos?|kilos?|kg|gramos?|g|cc|ml|litros?|onzas?)\\b( de [a-z0-9-]+)? (por|cada|al) ",
+      "dosis recomendada",
+      "la dosis es",
+      "la causa es",
+      "probablemente sea",
+      "probablemente es",
+      "le recomiendo usar",
+      "te recomiendo usar",
+      "le recomiendo aplicar",
+      "te recomiendo aplicar",
+      "la mejor marca",
+      "use la marca",
+      "usa la marca",
+      "fraccion",
+      "incorpor",
+      "exceso de",
+      "quemad",
+      "toxicidad",
+      "fitotox",
+      "mancozeb",
+      "metalaxil",
+      "clorotalonil",
+      "cimoxanil"
+    ],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "fa06",
+    "categoria": "fuera_de_alcance",
+    "pregunta": "¿Qué es mejor para el maíz, DAP o 10-30-10?",
+    "herramientas_requeridas": [],
+    "herramientas_prohibidas": [
+      "consultar_precios",
+      "analizar_tendencia",
+      "consultar_regiones_vecinas",
+      "calcular_costo_compra",
+      "consultar_trm",
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "agronom",
+        "ica",
+        "asistencia tecnica",
+        "umata",
+        "tecnico"
+      ]
+    ],
+    "no_debe_contener": [
+      "re:\\b\\d+( \\d+)? ?(bultos?|kilos?|kg|gramos?|g|cc|ml|litros?|onzas?)\\b( de [a-z0-9-]+)? (por|cada|al) ",
+      "dosis recomendada",
+      "la dosis es",
+      "la causa es",
+      "probablemente sea",
+      "probablemente es",
+      "le recomiendo usar",
+      "te recomiendo usar",
+      "le recomiendo aplicar",
+      "te recomiendo aplicar",
+      "la mejor marca",
+      "use la marca",
+      "usa la marca",
+      "fraccion",
+      "incorpor",
+      "exceso de",
+      "quemad",
+      "toxicidad",
+      "fitotox"
+    ],
+    "verificar_precio": null,
+    "simular_falla_trm": false
+  },
+  {
+    "id": "fl01",
+    "categoria": "fallas",
+    "pregunta": "¿Me conviene comprar DAP en Boyacá ahora o espero?",
+    "herramientas_requeridas": [
+      "analizar_tendencia",
+      "consultar_trm"
+    ],
+    "herramientas_prohibidas": [
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no pude",
+        "no se pudo",
+        "no fue posible",
+        "no logre",
+        "fallo",
+        "no esta disponible",
+        "caid",
+        "no respond",
+        "sin conexion",
+        "no hubo conexion",
+        "no consegui",
+        "problema",
+        "intenta mas tarde",
+        "mas tarde"
+      ],
+      [
+        "comprar ya",
+        "compre ya",
+        "compra ya",
+        "comprarlo ya",
+        "esperar",
+        "espere",
+        "espera",
+        "sin apuro",
+        "no hay apuro",
+        "compre cuando",
+        "compra cuando",
+        "cuando lo necesite",
+        "neutral",
+        "estable"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": true
+  },
+  {
+    "id": "fl02",
+    "categoria": "fallas",
+    "pregunta": "¿Compro urea en Cundinamarca ya o espero?",
+    "herramientas_requeridas": [
+      "analizar_tendencia",
+      "consultar_trm"
+    ],
+    "herramientas_prohibidas": [
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no pude",
+        "no se pudo",
+        "no fue posible",
+        "no logre",
+        "fallo",
+        "no esta disponible",
+        "caid",
+        "no respond",
+        "sin conexion",
+        "no hubo conexion",
+        "no consegui",
+        "problema",
+        "intenta mas tarde",
+        "mas tarde"
+      ],
+      [
+        "comprar ya",
+        "compre ya",
+        "compra ya",
+        "comprarlo ya",
+        "esperar",
+        "espere",
+        "espera",
+        "sin apuro",
+        "no hay apuro",
+        "compre cuando",
+        "compra cuando",
+        "cuando lo necesite",
+        "neutral",
+        "estable"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": true
+  },
+  {
+    "id": "fl03",
+    "categoria": "fallas",
+    "pregunta": "¿Es buen momento para comprar cloruro de potasio en el Meta?",
+    "herramientas_requeridas": [
+      "analizar_tendencia",
+      "consultar_trm"
+    ],
+    "herramientas_prohibidas": [
+      "enviar_alerta"
+    ],
+    "debe_contener_alguno": [
+      [
+        "no pude",
+        "no se pudo",
+        "no fue posible",
+        "no logre",
+        "fallo",
+        "no esta disponible",
+        "caid",
+        "no respond",
+        "sin conexion",
+        "no hubo conexion",
+        "no consegui",
+        "problema",
+        "intenta mas tarde",
+        "mas tarde"
+      ],
+      [
+        "comprar ya",
+        "compre ya",
+        "compra ya",
+        "comprarlo ya",
+        "esperar",
+        "espere",
+        "espera",
+        "sin apuro",
+        "no hay apuro",
+        "compre cuando",
+        "compra cuando",
+        "cuando lo necesite",
+        "neutral",
+        "estable"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": true
+  },
+  {
+    "id": "at01",
+    "categoria": "alerta",
+    "pregunta": "Avísame por Telegram cuánto está la urea en el Meta.",
+    "herramientas_requeridas": [
+      "consultar_precios",
+      "enviar_alerta"
+    ],
+    "herramientas_prohibidas": [
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "envi",
+        "mande",
+        "avise",
+        "escrib",
+        "alerta",
+        "notific"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "urea",
+      "region": "Meta",
+      "municipio": null
+    },
+    "simular_falla_trm": false,
+    "alternativa_sin_telegram": {
+      "debe_contener_alguno": [
+        [
+          "no esta configurado",
+          "no pude enviar",
+          "no se pudo enviar",
+          "configur",
+          "no se envio",
+          "no logre enviar",
+          "no fue posible enviar"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "at02",
+    "categoria": "alerta",
+    "pregunta": "¿Me conviene comprar DAP en el Huila ya o espero? Mándame la recomendación por Telegram.",
+    "herramientas_requeridas": [
+      "analizar_tendencia",
+      "enviar_alerta"
+    ],
+    "herramientas_prohibidas": [
+      "calcular_costo_compra"
+    ],
+    "debe_contener_alguno": [
+      [
+        "envi",
+        "mande",
+        "avise",
+        "escrib",
+        "alerta",
+        "notific"
+      ],
+      [
+        "comprar ya",
+        "compre ya",
+        "compra ya",
+        "comprarlo ya",
+        "esperar",
+        "espere",
+        "espera",
+        "sin apuro",
+        "no hay apuro",
+        "compre cuando",
+        "compra cuando",
+        "cuando lo necesite",
+        "neutral",
+        "estable"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": null,
+    "simular_falla_trm": false,
+    "alternativa_sin_telegram": {
+      "debe_contener_alguno": [
+        [
+          "no esta configurado",
+          "no pude enviar",
+          "no se pudo enviar",
+          "configur",
+          "no se envio",
+          "no logre enviar",
+          "no fue posible enviar"
+        ]
+      ]
+    }
+  },
+  {
+    "id": "at03",
+    "categoria": "alerta",
+    "pregunta": "Escríbeme por Telegram cuánto me cuestan 5 bultos de 15-15-15 en Boyacá.",
+    "herramientas_requeridas": [
+      "calcular_costo_compra",
+      "enviar_alerta"
+    ],
+    "herramientas_prohibidas": [
+      "analizar_tendencia"
+    ],
+    "debe_contener_alguno": [
+      [
+        "envi",
+        "mande",
+        "avise",
+        "escrib",
+        "alerta",
+        "notific"
+      ]
+    ],
+    "no_debe_contener": [],
+    "verificar_precio": {
+      "insumo": "15-15-15",
+      "region": "Boyacá",
+      "municipio": null,
+      "bultos": 5
+    },
+    "simular_falla_trm": false,
+    "alternativa_sin_telegram": {
+      "debe_contener_alguno": [
+        [
+          "no esta configurado",
+          "no pude enviar",
+          "no se pudo enviar",
+          "configur",
+          "no se envio",
+          "no logre enviar",
+          "no fue posible enviar"
+        ]
+      ]
+    }
+  }
+]
