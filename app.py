@@ -12,7 +12,7 @@ import os
 import streamlit as st
 
 from agente import config
-from agente.agente import ejecutar_agente, guardar_log
+from agente.agente import ejecutar_agente, formatear_uso, guardar_log
 from agente.llm import crear_cliente
 
 EJEMPLOS = {
@@ -100,6 +100,8 @@ with st.sidebar:
 for mensaje in st.session_state.mensajes:
     with st.chat_message(mensaje["role"], avatar="🧑‍🌾" if mensaje["role"] == "user" else "🤖"):
         st.markdown(sin_latex(mensaje["content"]))
+        if mensaje.get("uso"):
+            st.caption(sin_latex(formatear_uso(mensaje["uso"])))
         if mensaje.get("rastro"):
             mostrar_rastro(mensaje["rastro"])
 
@@ -114,8 +116,9 @@ if pregunta:
             salida = ejecutar_agente(pregunta, cliente, config.GROK_MODEL)
             guardar_log(pregunta, salida)  # misma evidencia en logs/ que la versión de consola
         st.markdown(sin_latex(salida["respuesta"]))
+        st.caption(sin_latex(formatear_uso(salida["uso"])))  # llamadas · tokens · tiempo · costo
         mostrar_rastro(salida["rastro"])
 
     st.session_state.mensajes.append(
-        {"role": "assistant", "content": salida["respuesta"], "rastro": salida["rastro"]}
+        {"role": "assistant", "content": salida["respuesta"], "rastro": salida["rastro"], "uso": salida["uso"]}
     )

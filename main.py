@@ -9,7 +9,7 @@ import os
 import sys
 
 from agente import config
-from agente.agente import ejecutar_agente, guardar_log
+from agente.agente import ejecutar_agente, formatear_uso, guardar_log
 from agente.llm import crear_cliente
 
 # Casos del video: (título, pregunta, ¿simular caída de la TRM?)
@@ -38,7 +38,8 @@ def preguntar(cliente, pregunta: str) -> None:
         if paso["tipo"] == "herramienta":
             mostrar_paso(paso)
     print(f"\n🤖 {salida['respuesta']}")
-    print(f"\n📝 Log guardado en: {guardar_log(pregunta, salida)}\n")
+    print(f"\n{formatear_uso(salida['uso'])}")
+    print(f"📝 Log guardado en: {guardar_log(pregunta, salida)}\n")
 
 
 def demo(cliente) -> None:
