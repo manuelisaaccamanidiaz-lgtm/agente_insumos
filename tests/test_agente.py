@@ -7,8 +7,10 @@ import json
 from types import SimpleNamespace as NS
 
 import openai
+import pytest
 
-from agente.agente import ejecutar_agente
+from agente import config
+from agente.agente import calcular_costo_usd, ejecutar_agente, formatear_uso, guardar_log
 from agente.herramientas import consultar_precios, ejecutar
 
 
@@ -110,3 +112,75 @@ def test_error_429_de_grok_da_mensaje_claro():
 def test_error_de_red_de_grok_da_mensaje_claro():
     error = _error_openai(openai.APIConnectionError)
     assert "conexión" in ejecutar_agente("hola", LLMQueFalla(error), "modelo-falso")["respuesta"]
+
+
+# ---------- Tokens y costo por tarea ----------
+class LLMConUso(LLMFalso):
+    """Igual que LLMFalso, pero cada respuesta trae `usage` (o no, si usage=None)."""
+    def __init__(self, usage=NS(prompt_tokens=1000, completion_tokens=50), **kwargs):
+        super().__init__(**kwargs)
+        self.usage = usage
+
+    def _create(self, model, messages, tools):
+        resp = super()._create(model, messages, tools)
+        return resp if self.usage is None else NS(choices=resp.choices, usage=self.usage)
+
+
+def test_uso_acumula_tokens_de_todas_las_llamadas(monkeypatch):
+    monkeypatch.setattr(config, "PRECIO_ENTRADA_USD_MILLON", None)
+    monkeypatch.setattr(config, "PRECIO_SALIDA_USD_MILLON", None)
+    uso = ejecutar_agente("urea Santander", LLMConUso(), "modelo-falso")["uso"]
+    assert uso["llamadas_llm"] == 2
+    assert (uso["tokens_entrada"], uso["tokens_salida"], uso["tokens_total"]) == (2000, 100, 2100)
+    assert isinstance(uso["duracion_ms"], int) and uso["duracion_ms"] >= 0
+    assert uso["costo_usd"] is None  # sin precios en el .env no se inventa el costo
+
+
+def test_uso_calcula_costo_con_precios_del_env(monkeypatch):
+    monkeypatch.setattr(config, "PRECIO_ENTRADA_USD_MILLON", 0.2)
+    monkeypatch.setattr(config, "PRECIO_SALIDA_USD_MILLON", 0.5)
+    uso = ejecutar_agente("urea Santander", LLMConUso(), "modelo-falso")["uso"]
+    assert uso["costo_usd"] == pytest.approx((2000 * 0.2 + 100 * 0.5) / 1_000_000)
+
+
+def test_sin_usage_los_tokens_quedan_en_none_y_no_rompe(monkeypatch):
+    monkeypatch.setattr(config, "PRECIO_ENTRADA_USD_MILLON", 0.2)
+    monkeypatch.setattr(config, "PRECIO_SALIDA_USD_MILLON", 0.5)
+    salida = ejecutar_agente("urea Santander", LLMConUso(usage=None), "modelo-falso")
+    assert salida["respuesta"] == "La urea está en 163000 COP"
+    uso = salida["uso"]
+    assert uso["llamadas_llm"] == 2
+    assert uso["tokens_entrada"] is uso["tokens_salida"] is uso["tokens_total"] is uso["costo_usd"] is None
+
+
+def test_error_de_grok_tambien_devuelve_uso():
+    uso = ejecutar_agente("hola", LLMQueFalla(_error_openai(openai.RateLimitError)), "modelo-falso")["uso"]
+    assert uso["llamadas_llm"] == 1 and uso["tokens_total"] == 0
+
+
+def test_calcular_costo_usd_falta_un_precio(monkeypatch):
+    assert calcular_costo_usd(1_000_000, 1_000_000, 0.2, 0.5) == pytest.approx(0.7)
+    monkeypatch.setattr(config, "PRECIO_ENTRADA_USD_MILLON", None)  # PRECIO_ENTRADA vacío en el .env
+    monkeypatch.setattr(config, "PRECIO_SALIDA_USD_MILLON", 0.5)
+    assert calcular_costo_usd(1000, 100) is None
+    assert calcular_costo_usd(None, 100, 0.2, 0.5) is None
+
+
+def test_precio_del_env_vacio_o_invalido_es_none(monkeypatch):
+    for valor, esperado in (("", None), ("abc", None), ("0.20", 0.2), ("0,5", 0.5)):
+        monkeypatch.setenv("PRECIO_PRUEBA", valor)
+        assert config._precio_millon("PRECIO_PRUEBA") == esperado
+
+
+def test_formatear_uso_linea_discreta():
+    uso = {"llamadas_llm": 3, "tokens_total": 4210, "duracion_ms": 6140, "costo_usd": 0.0021}
+    assert formatear_uso(uso) == "🧾 3 llamadas · 4.210 tokens · 6,1 s · $0,0021 USD"
+    uso.update(llamadas_llm=1, tokens_total=None, costo_usd=None)
+    assert formatear_uso(uso) == "🧾 1 llamada · tokens n/d · 6,1 s · costo sin precio"
+
+
+def test_log_incluye_uso(monkeypatch, tmp_path):
+    monkeypatch.setattr(config, "CARPETA_LOGS", tmp_path)
+    salida = ejecutar_agente("urea Santander", LLMConUso(), "modelo-falso")
+    ruta = guardar_log("urea Santander", salida)
+    assert json.loads(open(ruta, encoding="utf-8").read())["uso"]["tokens_total"] == 2100
