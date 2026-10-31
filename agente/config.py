@@ -67,6 +67,21 @@ CARPETA_LOGS = RAIZ / "logs"
 # Freno de seguridad: máximo de vueltas del loop para que nunca sea infinito
 MAX_ITERACIONES = int(os.getenv("MAX_ITERACIONES", "5"))
 
+
+def _precio_millon(nombre: str) -> float | None:
+    """Precio en USD por millón de tokens. Vacío o inválido → None (no se inventan precios)."""
+    try:
+        return float(os.getenv(nombre, "").strip().replace(",", "."))
+    except ValueError:
+        return None
+
+
+# ---------- S3 · Costo por tarea ----------
+# ⚠️ MANUAL: precio por MILLÓN de tokens de tu modelo. Tómalo del panel de la plataforma del
+#    reto o de la página de precios de xAI. Si están vacíos, el costo se muestra como "sin precio".
+PRECIO_ENTRADA_USD_MILLON = _precio_millon("PRECIO_ENTRADA_USD_MILLON")
+PRECIO_SALIDA_USD_MILLON = _precio_millon("PRECIO_SALIDA_USD_MILLON")
+
 # URL que no existe (el dominio .invalid nunca resuelve): sirve para simular una caída
 URL_TRM_FALLIDA = "https://trm-falla-simulada.invalid/resource.json"
 
