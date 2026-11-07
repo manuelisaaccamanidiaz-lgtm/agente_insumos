@@ -19,7 +19,8 @@ XAI_API_KEY = os.getenv("XAI_API_KEY", "")
 # ⚠️ MANUAL: verifica en la documentación de xAI la URL base y el nombre del
 #    modelo vigente (cambian con el tiempo). La API de Grok es compatible con
 #    el SDK de OpenAI, por eso usamos la librería `openai` con otra base_url.
-XAI_BASE_URL = os.getenv("XAI_BASE_URL", "https://api.x.ai/v1")
+# Por defecto se usa la pasarela del reto (la de xAI directo no acepta las llaves pk_ del reto)
+XAI_BASE_URL = os.getenv("XAI_BASE_URL") or "https://api.reto.pltk.mx/v1"
 GROK_MODEL = os.getenv("GROK_MODEL", "")  # ej: el modelo que veas en console.x.ai
 
 # CSV de precios de EJEMPLO (ficticios): SOLO lo usan las pruebas para armar un Excel falso
