@@ -169,9 +169,9 @@ def ejecutar_agente(pregunta: str, cliente, modelo: str, max_iter: int = config.
             ],
         })
         for tc in msg.tool_calls:
-            inicio = time.perf_counter()
+            inicio_herramienta = time.perf_counter()
             resultado = herramientas.ejecutar(tc.function.name, tc.function.arguments)
-            duracion_ms = round((time.perf_counter() - inicio) * 1000)
+            duracion_ms = round((time.perf_counter() - inicio_herramienta) * 1000)
             dato = json.loads(resultado)
             paso = {"vuelta": vuelta, "tipo": "herramienta",
                     "nombre": tc.function.name, "argumentos": tc.function.arguments,
