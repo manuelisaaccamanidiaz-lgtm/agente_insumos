@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/static/estilos.css">
+</head>
+<body>
+<header class="barra">
+  <div class="barra-in">
+    <div class="marca">
+      <span class="marca-nombre">Abona</span>
+      <span class="marca-lema">Abone con datos, no con corazonadas.</span>
+    </div>
+    <div class="barra-dato" id="estado-datos">Cargando datos del DANE</div>
+  </div>
+  <div class="perfil" aria-hidden="true"><i class="p-hoja"></i><i class="p-ocre"></i><i class="p-tierra"></i></div>
+</header>
+
+<main class="cuerpo">
+  <section class="chat" aria-label="Conversación con Abona">
+    <div class="mensajes" id="mensajes" aria-live="polite">
+      <article class="msg abona bienvenida" id="bienvenida">
+        <p class="cifra">Precios reales de fertilizantes, por departamento y municipio.</p>
+        <p>Soy Abona, asesor de compra de insumos agrícolas. Pregúnteme cuánto vale un fertilizante en su región, si conviene comprar ya o esperar, cuánto le cuesta su compra o dónde está más barato.</p>
+        <div class="sugerencias" id="sugerencias">
+          <button type="button" data-q="¿Cuánto vale el bulto de urea en Santander?">Precio de la urea en Santander</button>
+          <button type="button" data-q="¿Me conviene comprar DAP en Boyacá ahora o espero?">¿Compro DAP en Boyacá o espero?</button>
+          <button type="button" data-q="¿Cuánto me cuestan 20 bultos de 15-15-15 en Bucaramanga?">20 bultos de 15-15-15 en Bucaramanga</button>
+          <button type="button" data-q="¿Dónde consigo urea más barata cerca de La Guajira?">Urea más barata cerca de La Guajira</button>
+        </div>
+        <p class="pie">Fuente: DANE · SIPSA-Insumos. Abona informa precios y momentos de compra; no da recomendaciones agronómicas.</p>
+      </article>
+    </div>
+
+    <form class="redactor" id="redactor" autocomplete="off">
+      <label for="pregunta" class="oculto">Su pregunta</label>
+      <textarea id="pregunta" rows="1" maxlength="500" placeholder="Ej.: ¿Cuánto me cuestan 10 bultos de urea en el Meta?" required></textarea>
+      <button type="submit" id="enviar">Consultar</button>
+    </form>
+  </section>
+
+  <aside class="lateral">
+    <section class="panel">
+      <h2>Fuente de los precios</h2>
+      <dl class="datos">
+        <div><dt>Origen</dt><dd>DANE · SIPSA-Insumos</dd></div>
+        <div><dt>Último mes</dt><dd id="d-periodo">—</dd></div>
+        <div><dt>Fertilizantes</dt><dd id="d-insumos">—</dd></div>
+        <div><dt>Frecuencia</dt><dd>Mensual, con ~3 semanas de retraso</dd></div>
+      </dl>
+    </section>
+
+    <section class="panel" id="panel-carga">
+      <h2>Corrida de carga (S4)</h2>
+      <p class="vacio" id="c-vacio">Sin corrida en curso.</p>
+      <div id="c-datos" hidden>
+        <div class="progreso"><div class="progreso-barra" id="c-barra"></div></div>
+        <dl class="datos">
+          <div><dt>Tareas</dt><dd id="c-tareas">—</dd></div>
+          <div><dt>Éxito</dt><dd id="c-exito">—</dd></div>
+          <div><dt>Costo acumulado</dt><dd id="c-costo">—</dd></div>
+          <div><dt>Horas corriendo</dt><dd id="c-horas">—</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Lectura de la recomendación</h2>
+      <ul class="leyenda">
+        <li><span class="rec sube">Comprar ya</span> el precio viene subiendo</li>
+        <li><span class="rec baja">Esperar</span> el precio viene bajando</li>
+        <li><span class="rec quieto">Sin apuro</span> el precio está estable</li>
+      </ul>
+    </section>
+  </aside>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

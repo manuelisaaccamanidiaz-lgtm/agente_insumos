@@ -1,0 +1,12 @@
+{"hora": "2026-11-07T13:20:59-05:00", "tipo": "inicio_proceso", "pendientes": 1400, "ya_hechas": 0, "intervalo_s": 33, "modelo": "grok-4.6"}
+{"hora": "2026-11-07T14:21:05-05:00", "tipo": "resumen_hora", "tareas": 110, "exitos": 110, "costo_usd": 1.0556}
+{"hora": "2026-11-07T15:21:09-05:00", "tipo": "resumen_hora", "tareas": 219, "exitos": 219, "costo_usd": 2.0936}
+{"hora": "2026-11-07T16:21:44-05:00", "tipo": "resumen_hora", "tareas": 329, "exitos": 329, "costo_usd": 3.1652}
+{"hora": "2026-11-07T17:21:50-05:00", "tipo": "resumen_hora", "tareas": 438, "exitos": 438, "costo_usd": 4.2414}
+{"hora": "2026-11-07T18:22:20-05:00", "tipo": "resumen_hora", "tareas": 548, "exitos": 548, "costo_usd": 5.2831}
+{"hora": "2026-11-07T19:22:44-05:00", "tipo": "resumen_hora", "tareas": 657, "exitos": 657, "costo_usd": 6.3502}
+{"hora": "2026-11-07T20:23:06-05:00", "tipo": "resumen_hora", "tareas": 766, "exitos": 766, "costo_usd": 7.3852}
+{"hora": "2026-11-07T21:23:11-05:00", "tipo": "resumen_hora", "tareas": 875, "exitos": 875, "costo_usd": 8.4159}
+{"hora": "2026-11-07T22:23:33-05:00", "tipo": "resumen_hora", "tareas": 985, "exitos": 985, "costo_usd": 9.5044}
+{"hora": "2026-11-07T23:24:02-05:00", "tipo": "resumen_hora", "tareas": 1095, "exitos": 1095, "costo_usd": 10.529}
+{"hora": "2026-11-08T00:24:35-05:00", "tipo": "resumen_hora", "tareas": 1205, "exitos": 1205, "costo_usd": 11.6071}
