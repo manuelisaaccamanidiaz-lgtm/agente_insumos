@@ -13,3 +13,5 @@ reportes/
 # S4: la prueba corta y los paquetes temporales no se suben
 bitacora/prueba/
 *.tgz
+# videos: se suben a YouTube, no al repo
+*.mp4
