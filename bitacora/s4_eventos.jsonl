@@ -10,3 +10,5 @@
 {"hora": "2026-11-07T22:23:33-05:00", "tipo": "resumen_hora", "tareas": 985, "exitos": 985, "costo_usd": 9.5044}
 {"hora": "2026-11-07T23:24:02-05:00", "tipo": "resumen_hora", "tareas": 1095, "exitos": 1095, "costo_usd": 10.529}
 {"hora": "2026-11-08T00:24:35-05:00", "tipo": "resumen_hora", "tareas": 1205, "exitos": 1205, "costo_usd": 11.6071}
+{"hora": "2026-11-08T01:24:44-05:00", "tipo": "resumen_hora", "tareas": 1314, "exitos": 1314, "costo_usd": 12.6673}
+{"hora": "2026-11-08T02:12:26-05:00", "tipo": "fin_proceso", "tareas": 1400, "exitos": 1400, "costo_usd": 13.4956, "motivo": "cola terminada"}

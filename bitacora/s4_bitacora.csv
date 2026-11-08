@@ -4810,3 +4810,443 @@ Si va a comprar, conviene **hacerlo ya**, porque el precio viene al alza.",True,
 En los últimos 6 meses el precio está casi quieto (+0,9% al mes). Frente a septiembre de 2025 ($16.038) sí está más cara (+16,8%). No hay señal de que vaya a bajar pronto, ni de que se esté disparando.
 
 El dólar (TRM) va **subiendo** (cerca de $3.238, +2,4% en la semana). Los fertilizantes son importados y si el dó",True,,analizar_tendencia | consultar_trm,,0,2,5700,247,0.009456
+1268,s4-1268,costo,2026-11-08T00:59:12-05:00,2026-11-08T00:59:23-05:00,11.63,¿cuánto me cuestan 2 bultos de 15-15-15 en magdalena?,"Según el DANE, en septiembre de 2026, 2 bultos de 15-15-15 (de 50 kg) en Magdalena le cuestan alrededor de **$353.000**. Cada bulto sale a unos **$176.500**. Solo hay dato de un municipio, por eso no hay rango de precios.",True,,calcular_costo_compra,,0,2,5347,102,0.008664
+1269,s4-1269,precio,2026-11-08T00:59:45-05:00,2026-11-08T00:59:53-05:00,8.05,"Necesito saber el precio del bulto de 15-15-15 en Huila, por favor","Según el DANE, en septiembre de 2026 el bulto de 50 kg de 15-15-15 en Huila costaba alrededor de **$175.827** (entre **$166.250** y **$180.350**, según el municipio). Dato de 5 municipios.",True,,consultar_precios,,0,2,5742,87,0.009268
+1270,s4-1270,tendencia,2026-11-08T01:00:18-05:00,2026-11-08T01:00:36-05:00,17.98,¿El urea en Atlántico está subiendo o bajando?,"Según el DANE, en **septiembre de 2026** la urea en Atlántico **está subiendo**.
+
+El bulto de 50 kg está **alrededor de $221.900**.
+
+- En los últimos 6 meses (abril a septiembre de 2026) subió cerca de **5,1% por mes** (unos $10.583 más cada mes).
+- Frente a agosto de 2026 ya iba **1,7% más cara**.
+
+En resumen: no está bajando; viene al alza. Si me dice cuántos bultos necesita, le calculo el costo.",True,,analizar_tendencia,,0,2,5801,169,0.009492
+1271,s4-1271,municipio,2026-11-08T01:00:51-05:00,2026-11-08T01:00:59-05:00,7.99,"vivo en bucaramanga, cuanto me sale el bulto de urea?","Según el DANE, en septiembre de 2026 el bulto de urea (50 kg, Urea 46%) en **Bucaramanga** estaba alrededor de **$172.020**.
+
+Ese es el último dato publicado; no es el precio de hoy. Si quiere, le digo si conviene comprar ya o esperar, o cuánto le salen varios bultos.",True,,consultar_precios,,0,2,5862,107,0.009491
+1272,s4-1272,precio,2026-11-08T01:01:24-05:00,2026-11-08T01:01:44-05:00,19.97,"buenas, ¿qué precio tiene el kcl en casanare?","Según el DANE, en **septiembre de 2026** el cloruro de potasio (KCl, bulto de 50 kg) en Casanare está **alrededor de $137.667** (entre $126.333 y $149.000, según el municipio).",True,,consultar_precios,,0,2,5799,80,0.009348
+1273,s4-1273,precio,2026-11-08T01:01:57-05:00,2026-11-08T01:02:15-05:00,18.08,"necesito saber el precio del bulto de 15-15-15 en bolivar, por favor","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 15-15-15 en Bolívar costaba **alrededor de $181.250** (entre $145.000 y $217.500, según el municipio).",True,,consultar_precios,,0,2,5835,79,0.009403
+1274,s4-1274,alias,2026-11-08T01:02:30-05:00,2026-11-08T01:02:39-05:00,9.25,precio del urea 46 en meta,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de urea 46% en el Meta está **alrededor de $183.017** (entre $179.350 y $186.683, según el municipio).",True,,consultar_precios,,0,2,5912,73,0.009516
+1275,s4-1275,municipio,2026-11-08T01:03:03-05:00,2026-11-08T01:03:17-05:00,14.87,"vivo en guadalajara de buga, cuanto me sale el bulto de 15-15-15","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 15-15-15 en **Guadalajara de Buga** está alrededor de **$191.750**.",True,,consultar_precios,,0,2,6129,81,0.009874
+1276,s4-1276,precio,2026-11-08T01:03:36-05:00,2026-11-08T01:03:44-05:00,8.1,"hola, cuánto cuesta el kcl en boyacá","Según el DANE, en **julio de 2026** el KCl (cloruro de potasio 0-0-60, bulto de 50 kg) en Boyacá costaba **alrededor de $137.750**.
+
+Solo hay dato de un municipio y el precio mínimo y máximo coinciden, así que no hay rango.",True,,consultar_precios,,0,2,5382,91,0.008702
+1277,s4-1277,municipio,2026-11-08T01:04:09-05:00,2026-11-08T01:04:17-05:00,8.02,¿Cuánto vale el sulfato de amonio en Guamo?,"Según el DANE, en septiembre de 2026 el sulfato de amonio (bulto de 50 kg) en Guamo, Tolima, valía alrededor de **$110.000**.",True,,consultar_precios,,0,2,5852,96,0.009457
+1278,s4-1278,municipio,2026-11-08T01:04:42-05:00,2026-11-08T01:04:51-05:00,9.05,Qué precio tiene el 17-6-18-2 en el municipio de Popayán,"Según el DANE, en **septiembre de 2026**, el bulto de 50 kg de **17-6-18-2** en **Popayán** (Cauca) valía alrededor de **$165.000**.",True,,consultar_precios,,0,2,5949,114,0.00964
+1279,s4-1279,municipio,2026-11-08T01:05:15-05:00,2026-11-08T01:05:25-05:00,10.04,"¿A cómo está el bulto de 17-6-18-2 en Bogotá, D.C., Bogotá, D.C.?","Según el DANE, en septiembre de 2026 el bulto de 50 kg de 17-6-18-2 en Bogotá, D.C. está alrededor de **$187.150**.",True,,consultar_precios,,0,2,6170,116,0.009995
+1280,s4-1280,alias,2026-11-08T01:05:48-05:00,2026-11-08T01:05:56-05:00,8.18,precio del triple 15 en Sucre,"Según el DANE, en septiembre de 2026 el triple 15 (15-15-15) en Sucre está alrededor de **$180.000** el bulto de 50 kg (un solo municipio reportó ese precio).",True,,consultar_precios,,0,2,5882,73,0.009468
+1281,s4-1281,vecinos,2026-11-08T01:06:21-05:00,2026-11-08T01:06:32-05:00,11.45,¿cuánto vale el kcl en arauca?,"Según el DANE, en **septiembre de 2026** no hay precio de KCl (cloruro de potasio) en **Arauca**.
+
+La alternativa vecina más barata con dato reciente es **Casanare**: alrededor de **$137.667** el bulto de 50 kg (entre **$126.333** y **$149.000**, según el municipio).
+
+Si me dice cuántos bultos va a comprar, le calculo el costo.",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos,0,3,8571,191,0.013932
+1282,s4-1282,municipio,2026-11-08T01:06:54-05:00,2026-11-08T01:07:03-05:00,9.2,"vivo en buesaco, ¿cuánto me sale el bulto de 17-6-18-2?","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 17-6-18-2 (con magnesio) en **Buesaco** (Nariño) está alrededor de **$168.143**.
+
+Ese es el último dato publicado; no es el precio de hoy. Si quiere, le puedo decir cuánto le salen varios bultos o si conviene comprar ya o esperar.",True,,consultar_precios,,0,2,6007,157,0.009801
+1283,s4-1283,precio,2026-11-08T01:07:27-05:00,2026-11-08T01:07:35-05:00,8.06,"Hola, ¿cuánto cuesta el urea en Cauca?","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de urea 46% en Cauca costaba **alrededor de $172.417** (entre $156.500 y $182.500, según el municipio).
+
+Ese es el último dato publicado; no es el precio de hoy. Si me dice el municipio o cuántos bultos va a comprar, le ayudo con el costo o a ver dónde sale más barato.",True,,consultar_precios,,0,2,5865,139,0.009546
+1284,s4-1284,precio,2026-11-08T01:08:00-05:00,2026-11-08T01:08:12-05:00,11.95,"hola, cuanto cuesta el 13-26-6 en bogota, d.c.","Hola. Según el DANE, en septiembre de 2026 el bulto de 50 kg de 13-26-6 en Bogotá, D.C. costaba alrededor de **$187.500** (un solo municipio reportó).
+
+Ese es el último dato publicado; no es el precio de hoy. Si quiere, le digo cuánto salen varios bultos o si conviene comprar ya.",True,,consultar_precios,,0,2,6110,140,0.009938
+1285,s4-1285,vecinos,2026-11-08T01:08:33-05:00,2026-11-08T01:08:45-05:00,11.95,cuanto vale el 13-26-6 en magdalena?,"Según el DANE, en septiembre de 2026 **no hay precio de 13-26-6 en Magdalena**. Tampoco hay dato en los departamentos vecinos (Atlántico, Bolívar, Cesar y La Guajira).
+
+Donde sí hay datos de 13-26-6 es en: Antioquia, Bogotá D.C., Boyacá, Cundinamarca, Nariño y Norte de Santander.
+
+Si me dice uno de esos departamentos, le consulto el precio. O, si usa otro abono (urea, DAP, 15-15-15, etc.) en Magdalena, también se lo busco.",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos | consultar_regiones_vecinas:sin_datos,0,3,8309,198,0.013526
+1286,s4-1286,alias,2026-11-08T01:09:06-05:00,2026-11-08T01:09:16-05:00,10.02,Cuanto vale el bulto de cloruro de potasio en Valle del Cauca,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de cloruro de potasio (0-0-60) en Valle del Cauca vale **alrededor de $127.362** (entre $114.400 y $143.100, según el municipio; hay dato en 8 municipios).",True,,consultar_precios,,0,2,6027,93,0.009731
+1287,s4-1287,tendencia,2026-11-08T01:09:39-05:00,2026-11-08T01:09:55-05:00,16.01,compro ya el 13-26-6 o espero que baje estoy en boyacá,"**Compre ya** el 13-26-6.
+
+Según el DANE, en **septiembre de 2026** en Boyacá el bulto de 50 kg está **alrededor de $190.972** (entre $180.267 y $200.300, según el municipio).
+
+En los últimos 6 meses el precio viene **subiendo cerca de 2,5% cada mes** (unos $4.600 más por bulto). Frente a septiembre de 2025 está **6,1% más caro**. Aunque bajó un poquito respecto a agosto, la tendencia sigue al alza.
+
+El dólar también está subiendo (TRM $3.238, +2,4% esta semana). Como el fertilizante es importad",True,,analizar_tendencia | consultar_trm,,0,2,5767,203,0.009492
+1288,s4-1288,alias,2026-11-08T01:10:12-05:00,2026-11-08T01:10:20-05:00,8.62,cuanto vale el bulto de urea granulada en cesar?,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de urea 46% en Cesar valía alrededor de **$172.575** (entre **$155.000** y **$190.150**, según el municipio).",True,,consultar_precios,,0,2,5880,73,0.009465
+1289,s4-1289,municipio,2026-11-08T01:10:45-05:00,2026-11-08T01:10:53-05:00,8.2,que precio tiene el 10-30-10 en el municipio de guadalajara de buga?,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **10-30-10** en **Guadalajara de Buga** (Valle del Cauca) estaba alrededor de **$228.400**.
+
+Ese es el último dato publicado; no es el precio de hoy. Si quiere, le puedo decir cuánto le salen varios bultos o si conviene comprar ya o esperar.",True,,consultar_precios,,0,2,5981,128,0.009713
+1290,s4-1290,tendencia,2026-11-08T01:11:18-05:00,2026-11-08T01:11:36-05:00,18.64,"tengo que abonar pronto, ¿compro el 10-20-20 ya o aguanto? soy de antioquia","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 10-20-20 en Antioquia está **alrededor de $160.919** (entre $150.700 y $173.550, según el municipio).
+
+**Recomendación: esperar.**
+
+En los últimos 6 meses el precio viene bajando unos **3,5% por mes** (unos $6.318 menos por bulto cada mes). En agosto ya bajó 6,3% y está **11,5% más barato** que en septiembre de 2025.
+
+Ojo con el dólar: está **subiendo** (TRM $3.237, +2,4% en la última semana). El 10-20-20 es importado, y si el dólar s",True,,analizar_tendencia | consultar_trm,,0,2,5849,272,0.009732
+1291,s4-1291,costo,2026-11-08T01:11:51-05:00,2026-11-08T01:11:58-05:00,7.25,"voy a comprar 47 bultos de sulfato de amonio en huila, cuánto me sale todo","Según el DANE, en **septiembre de 2026**, 47 bultos de sulfato de amonio (bulto de 50 kg) en Huila le salen **alrededor de $3.943.394**.
+
+Según el municipio, el total puede ir **entre $3.673.520 y $4.347.500**. El bulto está alrededor de **$83.902**.",True,,calcular_costo_compra,,0,2,5339,118,0.008677
+1292,s4-1292,vecinos,2026-11-08T01:12:24-05:00,2026-11-08T01:12:39-05:00,15.01,Cuánto vale el sulfato de amonio en Vaupés,"En Vaupés **no hay precio** de sulfato de amonio en el DANE (SIPSA). El último mes publicado es **septiembre de 2026**.
+
+Los departamentos vecinos (Amazonas, Caquetá, Guainía y Guaviare) **tampoco** tienen dato.
+
+Sí hay registro en: Atlántico, Bogotá D.C., Cauca, Cesar, Cundinamarca, Huila, Nariño, Santander, Sucre, Tolima y Valle del Cauca.
+
+Si me dice en cuál de esos departamentos puede comprar, le consulto el precio.",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos | consultar_regiones_vecinas:sin_datos,0,3,8517,171,0.013814
+1293,s4-1293,costo,2026-11-08T01:12:57-05:00,2026-11-08T01:13:04-05:00,7.72,"Voy a comprar 35 bultos de sulfato de amonio en Cesar, cuánto me sale todo","Según el DANE, en **septiembre de 2026**, 35 bultos de sulfato de amonio (bulto de 50 kg) en Cesar le salen **alrededor de $3.227.000** (entre $3.158.155 y $3.295.845, según el municipio).
+
+Eso es a unos **$92.200** por bulto.",True,,calcular_costo_compra,,0,2,5337,116,0.00867
+1294,s4-1294,vecinos,2026-11-08T01:13:30-05:00,2026-11-08T01:13:39-05:00,8.94,¿cuánto vale el cal dolomita en nariño?,"En Nariño no hay precio de cal dolomita en el DANE. El último mes publicado es **septiembre de 2026**, y tampoco hay dato en los departamentos vecinos (Cauca y Putumayo).
+
+Departamentos donde sí hay precio de cal dolomita: Boyacá, Caldas, Cundinamarca, Huila, Meta, Risaralda, Santander, Tolima y Valle del Cauca.
+
+Si me dice uno de esos departamentos, le consulto el precio.",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos | consultar_regiones_vecinas:sin_datos,0,3,8285,151,0.013413
+1295,s4-1295,tendencia,2026-11-08T01:14:03-05:00,2026-11-08T01:14:21-05:00,17.98,"tengo que abonar pronto, compro el sulfato de amonio ya o aguanto? soy de cauca","Según el DANE, el último dato de **sulfato de amonio** en Cauca es de **junio de 2026**: alrededor de **$105.000** el bulto de 50 kg (un solo municipio con dato).
+
+**Recomendación: compre ya.**
+
+En los últimos 6 meses el precio viene subiendo cerca de **4,4% cada mes** (unos $4.043 más por bulto). En junio ya había subido **8,25%** frente a mayo. No hay cifra del mismo mes del año pasado para comparar.
+
+El dólar también está subiendo (TRM $3.237,83 al 7 de noviembre de 2026, +2,39% en la semana)",True,,analizar_tendencia | consultar_trm,,0,2,5714,221,0.009437
+1296,s4-1296,municipio,2026-11-08T01:14:36-05:00,2026-11-08T01:14:42-05:00,6.63,"a como esta el bulto de dap en caqueza, cundinamarca","Según el DANE, en **agosto de 2026** el bulto de 50 kg de DAP (fosfato diamónico) en **Cáqueza, Cundinamarca** estaba alrededor de **$235.667**.",True,,consultar_precios,,0,2,5801,76,0.009344
+1297,s4-1297,precio,2026-11-08T01:15:09-05:00,2026-11-08T01:15:17-05:00,7.94,precio del 15-15-15 en magdalena,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **15-15-15** en Magdalena está alrededor de **$176.500**.
+
+Solo hay dato de un municipio, así que no hay rango de precios. El dato está al día (no está desactualizado).
+
+Si quiere, le puedo decir cuánto le salen varios bultos o si conviene comprar ya o esperar.",True,,consultar_precios,,0,2,5661,135,0.009216
+1298,s4-1298,fuera_de_alcance,2026-11-08T01:15:42-05:00,2026-11-08T01:15:49-05:00,7.43,"el abono que compré no le está sirviendo al mora, ¿por qué será?","No le puedo decir por qué el abono no le está sirviendo a la mora. Yo solo manejo precios y cuándo comprar insumos, no diagnostico cultivos ni recomiendo qué aplicar.
+
+Para eso conviene consultar de inmediato a un agrónomo, a la UMATA de su municipio o al ICA. Ellos sí pueden ver el cultivo y orientar.
+
+Si me dice qué insumo compró y en qué departamento está, le puedo decir el precio según el DANE, si conviene comprar ya o esperar, y dónde está más barato.",True,,,,0,1,2505,109,0.004156
+1299,s4-1299,precio,2026-11-08T01:16:15-05:00,2026-11-08T01:16:22-05:00,6.85,precio del cal dolomita en Caldas,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de cal dolomita en Caldas estaba **alrededor de $22.500** (entre $22.250 y $22.750, según el municipio). Dato de 2 municipios.",True,,consultar_precios,,0,2,5866,103,0.009491
+1300,s4-1300,tendencia,2026-11-08T01:16:48-05:00,2026-11-08T01:17:03-05:00,14.8,Compro ya el cal dolomita o espero que baje? Estoy en Caldas,"**Sin apuro:** compre cuando la necesite.
+
+Según el DANE, en **septiembre de 2026** el bulto de 50 kg de cal dolomita en Caldas estaba **alrededor de $22.500** (entre $22.250 y $22.750, según el municipio).
+
+**Porqué:**
+- En los últimos 6 meses el precio está casi quieto (baja unos **0,2% al mes**).
+- Frente a agosto 2026 bajó un poco (**-2,9%**).
+- Frente a septiembre 2025 está más cara (**+12,7%**: entonces valía unos $19.960).
+
+El dólar va **subiendo** (TRM $3.237,83 al 7 de noviembre de 2026",True,,analizar_tendencia | consultar_trm,,0,2,5752,296,0.009616
+1301,s4-1301,municipio,2026-11-08T01:17:21-05:00,2026-11-08T01:17:28-05:00,6.96,"a como esta el bulto de 17-6-18-2 en chaparral, tolima?","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 17-6-18-2 en **Chaparral (Tolima)** está alrededor de **$169.250**.",True,,consultar_precios,,0,2,5904,79,0.009513
+1302,s4-1302,fuera_de_alcance,2026-11-08T01:17:54-05:00,2026-11-08T01:18:01-05:00,7.55,Que formula de abono le sirve mas al yuca en clima frio?,"No le puedo recomendar qué fórmula de abono usar en yuca ni en clima frío: yo solo manejo **precios**, **cuándo comprar** y **dónde sale más barato**, no soy agrónomo.
+
+Para dosis, fórmula y si le sirve en su finca, consulte a un agrónomo, a la **UMATA** de su municipio o al **ICA**. Ellos sí pueden ver el suelo y el clima.
+
+Si me dice **qué insumo** quiere (por ejemplo urea, 15-15-15, DAP) y **en qué departamento**, le digo el precio según el DANE, si conviene comprar ya y dónde está más barato",True,,,,0,1,2503,139,0.004201
+1303,s4-1303,precio,2026-11-08T01:18:27-05:00,2026-11-08T01:18:33-05:00,5.82,precio del urea en Cesar,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de urea 46% en Cesar está **alrededor de $172.575** (entre $155.000 y $190.150, según el municipio).",True,,consultar_precios,,0,2,5796,71,0.009329
+1304,s4-1304,precio,2026-11-08T01:19:00-05:00,2026-11-08T01:19:08-05:00,7.93,Cuanto vale el bulto de dap en Valle del Cauca?,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de DAP (fosfato diamónico 18-46-0) en Valle del Cauca valía **alrededor de $246.085** (entre **$238.000** y **$263.650**, según el municipio). Dato de 8 municipios, al día.",True,,consultar_precios,,0,2,5910,119,0.009586
+1305,s4-1305,vecinos,2026-11-08T01:19:33-05:00,2026-11-08T01:19:46-05:00,13.2,¿a cómo está el bulto de dap en cesar?,"Según el DANE, **en Cesar no hay dato reciente de DAP**. El último precio es de **marzo de 2025** (hace 18 meses): alrededor de **$201.100** el bulto de 50 kg. Eso ya está muy viejo y no sirve para decidir una compra hoy.
+
+El DANE publicó hasta **septiembre de 2026**. En departamentos vecinos con dato de ese mes, lo más barato está en **Norte de Santander**: alrededor de **$230.250** (entre **$228.500** y **$232.000** según el municipio). En Santander está en **$238.000**.
+
+En Bolívar, La Guajir",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos,0,3,8652,230,0.014122
+1306,s4-1306,tendencia,2026-11-08T01:20:06-05:00,2026-11-08T01:20:24-05:00,17.69,"como viene el precio del 15-15-15 en santander, me apuro a comprar?","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 15-15-15 en Santander está **alrededor de $170.990** (entre $160.000 y $183.667, según el municipio).
+
+**No hay apuro:** cómprelo cuando lo necesite.
+
+En los últimos 6 meses el precio está casi quieto (+0,2 % por mes). En agosto bajó un poco (−1,3 %). Sí está más caro que en septiembre de 2025 (+16,3 %).
+
+El dólar viene subiendo (TRM de $3.238 el 7 de noviembre, +2,4 % en la semana). Como el 15-15-15 es importado, si el dólar sigue al",True,,analizar_tendencia | consultar_trm,,0,2,5791,214,0.009548
+1307,s4-1307,precio,2026-11-08T01:20:39-05:00,2026-11-08T01:20:47-05:00,8.14,"¿cuánto vale el bulto de 10-30-10 en bogotá, d.c.?","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 10-30-10 en **Bogotá, D.C.** valía alrededor de **$207.750**.",True,,consultar_precios,,0,2,5941,100,0.009605
+1308,s4-1308,municipio,2026-11-08T01:21:12-05:00,2026-11-08T01:21:22-05:00,9.65,cuanto vale el dap en garzon?,"Según el DANE, en septiembre de 2026 el DAP (fosfato diamónico 18-46-0) en **Garzón** (Huila) está alrededor de **$228.900** el bulto de 50 kg.",True,,consultar_precios,,0,2,5859,99,0.009473
+1309,s4-1309,vecinos,2026-11-08T01:21:45-05:00,2026-11-08T01:21:57-05:00,12.17,Cuanto vale el 10-20-20 en Cesar?,"En Cesar el DANE no tiene precio de 10-20-20 en los últimos 12 meses (el último mes publicado es septiembre de 2026).
+
+Lo más cercano y barato con dato reciente es Santander: según el DANE, en septiembre de 2026 el bulto de 50 kg estaba alrededor de $164.567 (entre $150.650 y $173.800, según el municipio).
+
+En Norte de Santander, el mismo mes, estaba en $180.000. En Bolívar, La Guajira y Magdalena tampoco hay dato.
+
+Si me dice otro insumo o cuántos bultos va a comprar, le ayudo con eso.",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos,0,3,8690,232,0.014186
+1310,s4-1310,municipio,2026-11-08T01:22:18-05:00,2026-11-08T01:22:29-05:00,11.04,precio del urea en Bucaramanga,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de urea 46% en **Bucaramanga** (Santander) costó **alrededor de $172.020**.
+
+Ese es el último dato publicado; el DANE sale con unas 3 semanas de retraso, así que no es el precio de hoy.
+
+Si quiere, le puedo decir cuánto le salen varios bultos o si conviene comprar ya o esperar.",True,,consultar_precios,,0,2,5865,150,0.009564
+1311,s4-1311,tendencia,2026-11-08T01:22:51-05:00,2026-11-08T01:23:08-05:00,16.74,"Tengo que abonar pronto, compro el kcl ya o aguanto Soy de Narino","Según el DANE, en **septiembre de 2026** el KCl (cloruro de potasio, bulto de 50 kg) en Nariño está alrededor de **$119.424** (entre $115.840 y $125.333, según el municipio).
+
+**Recomendación: sin apuro.** En los últimos 6 meses el precio está casi quieto. Está un 8,1% más caro que en septiembre de 2025 ($110.460).
+
+El dólar viene subiendo (TRM $3.238 el 7 de noviembre de 2026, +2,4% en la semana). Los fertilizantes son importados: si el dólar sigue al alza, el KCl puede encarecerse después. Com",True,,analizar_tendencia | consultar_trm,,0,2,5931,230,0.009796
+1312,s4-1312,costo,2026-11-08T01:23:24-05:00,2026-11-08T01:23:31-05:00,7.02,¿Cuánta plata necesito para 32 bultos de 15-15-15 en Huila?,"Según el DANE, en septiembre de 2026, 32 bultos de 15-15-15 (bulto de 50 kg) en Huila le salen **alrededor de $5.626.464** (entre $5.320.000 y $5.771.200, según el municipio). Cada bulto está por unos $175.827.",True,,calcular_costo_compra,,0,2,5353,112,0.008689
+1313,s4-1313,alias,2026-11-08T01:23:57-05:00,2026-11-08T01:24:05-05:00,8.19,¿Cuánto vale el bulto de triple quince en Magdalena?,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de triple quince (15-15-15) en Magdalena valía alrededor de **$176.500**.
+
+Solo hay dato de un municipio y el precio mínimo y máximo coinciden, así que no hay rango.",True,,consultar_precios,,0,2,5661,109,0.009174
+1314,s4-1314,tendencia,2026-11-08T01:24:30-05:00,2026-11-08T01:24:44-05:00,14.05,compro ya el sulfato de amonio o espero que baje estoy en cesar,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de sulfato de amonio (SAM) en Cesar está **alrededor de $92.200** (entre $90.233 y $94.167, según el municipio).
+
+**Recomendación: sin apuro.** Cómprelo cuando lo necesite; no hay que apurarse ni esperar a que “baje”.
+
+**Por qué:**
+- En los últimos 6 meses el precio está casi quieto (+0,8% por mes).
+- Bajó un poquito frente a agosto (−0,5%).
+- Está un 4% más caro que en septiembre de 2025 ($88.600).
+
+El dólar (TRM) va **subiendo** (esta ",True,,analizar_tendencia | consultar_trm,,0,2,5760,275,0.009596
+1315,s4-1315,costo,2026-11-08T01:25:03-05:00,2026-11-08T01:25:10-05:00,6.69,Cuanta plata necesito para 44 bultos de 17-6-18-2 en Valle del Cauca?,"Según el DANE, en septiembre de 2026, 44 bultos de 17-6-18-2 (bulto de 50 kg) en Valle del Cauca le salen alrededor de **$7.700.000** (entre $7.282.000 y $7.920.000, según el municipio).",True,,calcular_costo_compra,,0,2,5383,109,0.008732
+1316,s4-1316,precio,2026-11-08T01:25:36-05:00,2026-11-08T01:25:43-05:00,6.89,"buenas, ¿qué precio tiene el sulfato de amonio en tolima?","Según el DANE, en septiembre de 2026 el sulfato de amonio (bulto de 50 kg) en Tolima está **alrededor de $89.675** (entre $81.550 y $110.000, según el municipio). Dato de 10 municipios.",True,,consultar_precios,,0,2,5864,83,0.009456
+1317,s4-1317,costo,2026-11-08T01:26:09-05:00,2026-11-08T01:26:16-05:00,6.82,cuanto valen 35 bultos de 13-26-6 en Boyacá,"Según el DANE, en septiembre de 2026, 35 bultos de 13-26-6 (bulto de 50 kg) en Boyacá le salen alrededor de **$6.684.020** (entre $6.309.345 y $7.010.500, según el municipio).
+
+Eso es a unos **$190.972** por bulto.",True,,calcular_costo_compra,,0,2,5339,117,0.008675
+1318,s4-1318,tendencia,2026-11-08T01:26:42-05:00,2026-11-08T01:27:01-05:00,19.11,compro ya el dap o espero que baje? estoy en antioquia,"Según el DANE, en **septiembre de 2026** el DAP (bulto de 50 kg) en Antioquia está **alrededor de $238.189** (entre $229.928 y $247.667, según el municipio).
+
+**Recomendación: sin apuro.** En los últimos 6 meses el precio está casi quieto (+0,9% por mes); frente a agosto apenas bajó un poquito. Compra cuando lo necesite. Sí está más caro que en septiembre de 2025 (+13,2%).
+
+El dólar va **subiendo** (TRM $3.237, +2,4% esta semana). El DAP es importado: si el dólar sigue al alza, el precio puede e",True,,analizar_tendencia | consultar_trm,,0,2,5775,190,0.009484
+1319,s4-1319,costo,2026-11-08T01:27:15-05:00,2026-11-08T01:27:22-05:00,7.12,"voy a comprar 45 bultos de 13-26-6 en nariño, ¿cuánto me sale todo?","Según el DANE, en septiembre de 2026, 45 bultos de 13-26-6 (bulto de 50 kg) en Nariño le salen alrededor de **$8.027.235**.
+
+Eso es entre **$7.759.485 y $8.294.985**, según el municipio. Cada bulto está alrededor de $178.383.",True,,calcular_costo_compra,,0,2,5336,118,0.008672
+1320,s4-1320,precio,2026-11-08T01:27:48-05:00,2026-11-08T01:27:55-05:00,6.93,"Necesito saber el precio del bulto de urea en Sucre, por favor","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de urea 46% en Sucre está **alrededor de $209.091**.
+
+El dato es de un solo municipio y está al día (no está desactualizado). Si quiere, le puedo decir cuánto le salen varios bultos o si conviene comprar ya o esperar.",True,,consultar_precios,,0,2,5805,98,0.009386
+1321,s4-1321,precio,2026-11-08T01:28:21-05:00,2026-11-08T01:28:29-05:00,7.88,A como esta la dap en Norte de Santander?,"Según el DANE, en septiembre de 2026 el DAP (fosfato diamónico 18-46-0, bulto de 50 kg) en Norte de Santander está alrededor de **$230.250** (entre **$228.500** y **$232.000**, según el municipio).
+
+Si quiere, le puedo decir si conviene comprar ya o esperar, o cuánto le salen varios bultos.",True,,consultar_precios,,0,2,5871,110,0.00951
+1322,s4-1322,municipio,2026-11-08T01:28:54-05:00,2026-11-08T01:29:01-05:00,7.0,¿qué precio tiene el cal dolomita en el municipio de algeciras?,"Según el DANE, en **agosto de 2026** el bulto de 50 kg de cal dolomita en **Algeciras (Huila)** estaba alrededor de **$16.500**.
+
+Ese es el último dato publicado; no hay rango porque solo hay reporte de ese municipio.",True,,consultar_precios,,0,2,5925,120,0.009612
+1323,s4-1323,tendencia,2026-11-08T01:29:27-05:00,2026-11-08T01:29:38-05:00,10.84,es buen momento para comprar 13-26-6 en Boyaca?,"Sí: **conviene comprar ya**.
+
+Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 13-26-6 en Boyacá está **alrededor de $190.972** (entre $180.267 y $200.300, según el municipio).
+
+**Por qué:** en los últimos 6 meses el precio viene subiendo cerca de **2,5% al mes** (unos $4.606 más por bulto cada mes). Frente a septiembre de 2025 ($180.010) está **6,1% más caro**. El mes pasado bajó un poquito (−1%), pero la tendencia de medio año es al alza.
+
+El dólar también está subiendo (TRM $3.23",True,,analizar_tendencia | consultar_trm,,0,2,5739,223,0.00948
+1324,s4-1324,tendencia,2026-11-08T01:30:00-05:00,2026-11-08T01:30:17-05:00,17.33,"¿El 10-30-10 en Bogotá, D.C. está subiendo o bajando?","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **10-30-10** en **Bogotá, D.C.** valía alrededor de **$207.750**.
+
+**Va bajando un poco**, pero despacio:
+- En los últimos 6 meses bajó cerca de **4%** (unos **0,8%** al mes).
+- Frente a agosto de 2026 bajó **2,6%**.
+- Frente a septiembre de 2025 sigue **un poco más caro** (+3,9%).
+
+No hay apuro: el precio está casi quieto. Puede comprar cuando lo necesite.",True,,analizar_tendencia,,0,2,6025,198,0.009895
+1325,s4-1325,precio,2026-11-08T01:30:33-05:00,2026-11-08T01:30:44-05:00,11.06,Cuanto esta costando el sulfato de amonio por los lados de Cauca,"Según el DANE, en **junio de 2026** el sulfato de amonio (bulto de 50 kg) en **Cauca** estaba alrededor de **$105.000**. Solo hay dato de un municipio y el precio mínimo y máximo coinciden, así que no hay rango.
+
+Si me dice cuántos bultos va a comprar o si quiere saber si conviene comprar ya o esperar, se lo calculo.",True,,consultar_precios,,0,2,5708,115,0.009259
+1326,s4-1326,precio,2026-11-08T01:31:06-05:00,2026-11-08T01:31:17-05:00,10.82,en cuánto anda el urea en cundinamarca este mes,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de urea 46% en Cundinamarca andaba **alrededor de $172.419** (entre **$156.000** y **$210.000**, según el municipio).
+
+Ese es el último dato publicado, no el precio de hoy. Si me dice el municipio, le afinamos más.",True,,consultar_precios,,0,2,5949,106,0.009627
+1327,s4-1327,tendencia,2026-11-08T01:31:39-05:00,2026-11-08T01:32:06-05:00,27.46,"tengo que abonar pronto, ¿compro el 10-30-10 ya o aguanto? soy de santander","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 10-30-10 en Santander está alrededor de **$193.000**.
+
+**Recomendación: sin apuro.** Cómprelo cuando lo vaya a usar. En los últimos 6 meses el precio está casi quieto (baja como 1,8% al mes) y frente a septiembre de 2025 apenas está 0,9% más caro.
+
+El dólar (TRM) viene subiendo esta semana (unos 2,4%). Como los fertilizantes se importan, si el dólar sigue al alza el precio puede subir después. Como usted tiene que abonar pronto, no ga",True,,analizar_tendencia | consultar_trm,,0,2,5768,187,0.009468
+1328,s4-1328,costo,2026-11-08T01:32:12-05:00,2026-11-08T01:32:20-05:00,8.09,Cuánta plata necesito para 5 bultos de cal dolomita en Huila,"Según el DANE, en septiembre de 2026, 5 bultos de cal dolomita (50 kg) en Huila le salen alrededor de **$80.165** (entre **$72.500** y **$87.835** según el municipio). Cada bulto anda por unos **$16.033**.",True,,calcular_costo_compra,,0,2,5388,102,0.008729
+1329,s4-1329,municipio,2026-11-08T01:32:45-05:00,2026-11-08T01:32:56-05:00,10.7,¿Qué precio tiene el 15-15-15 en el municipio de Subachoque?,"Según el DANE, en **agosto de 2026** el bulto de 50 kg de 15-15-15 en **Subachoque (Cundinamarca)** estaba alrededor de **$158.400**.
+
+Ese es el último dato publicado (con unas 3 semanas de retraso). No es el precio de hoy.",True,,consultar_precios,,0,2,5831,133,0.009483
+1330,s4-1330,municipio,2026-11-08T01:33:18-05:00,2026-11-08T01:33:32-05:00,13.71,precio del 17-6-18-2 en San Bernardo,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **17-6-18-2** en **San Bernardo (Cundinamarca)** estaba alrededor de **$163.500**.
+
+(En Nariño no hay dato de ese insumo para San Bernardo.)
+
+Si me dice cuántos bultos va a comprar, le calculo el total.",True,,consultar_precios | consultar_precios,consultar_precios:sin_datos,0,2,6210,185,0.010168
+1331,s4-1331,alias,2026-11-08T01:33:51-05:00,2026-11-08T01:34:04-05:00,13.11,Me conviene comprar triple 15 en Huila ahora,"Según el DANE, en **septiembre de 2026** el triple 15 (15-15-15) en Huila está **alrededor de $175.827** el bulto de 50 kg (entre **$166.250** y **$180.350**, según el municipio).
+
+**Recomendación: sin apuro.** En los últimos 6 meses el precio está casi quieto (baja un 0,1% por mes), así que no hay prisa: compre cuando lo necesite. Sí está más caro que en septiembre de 2025 (+15,4%).
+
+El dólar viene subiendo (TRM $3.237, +2,4% en la última semana). Como los fertilizantes se importan, si el dólar",True,,analizar_tendencia | consultar_trm,,0,2,5758,207,0.009484
+1332,s4-1332,vecinos,2026-11-08T01:34:24-05:00,2026-11-08T01:35:01-05:00,37.17,"Estoy en Sucre, donde consigo 13-26-6 mas barato?","En Sucre el DANE **no tiene datos** de 13-26-6 (ni en los vecinos Bolívar y Córdoba). El último mes publicado es **septiembre de 2026**.
+
+Donde sí hay dato reciente (septiembre 2026), el **más barato** es **Nariño**: alrededor de **$178.383** el bulto de 50 kg (entre $172.433 y $184.333 según el municipio).
+
+Otros con dato de ese mes:
+- **Bogotá**: $187.500
+- **Boyacá**: alrededor de $190.972 (entre $180.267 y $200.300)
+- **Cundinamarca**: alrededor de $204.625 (entre $201.750 y $207.500)
+
+Antio",True,,consultar_precios | consultar_regiones_vecinas | consultar_precios | consultar_precios | consultar_precios | consultar_precios | consultar_precios | consultar_precios,consultar_precios:sin_datos | consultar_regiones_vecinas:sin_datos,0,3,12991,400,0.021292
+1333,s4-1333,fuera_de_alcance,2026-11-08T01:35:01-05:00,2026-11-08T01:35:09-05:00,7.68,"el abono que compre no le esta sirviendo al mango, por que sera?","Compañero, yo solo le ayudo con **precios** de insumos, **cuándo comprar** y **dónde sale más barato**. No soy agrónomo y no puedo decirle por qué el abono no le está sirviendo al mango ni qué producto aplicar.
+
+Le recomiendo consultar a un agrónomo, a la **UMATA** de su municipio o al **ICA**, para que revisen el cultivo.
+
+Si me dice **qué insumo** quiere (urea, 15-15-15, etc.) y **en qué departamento** está, le digo el precio, si conviene comprar ya y dónde está más barato.",True,,,,0,1,2504,133,0.004193
+1334,s4-1334,costo,2026-11-08T01:35:34-05:00,2026-11-08T01:35:45-05:00,10.53,¿cuánto me cuestan 34 bultos de 10-20-20 en valle del cauca?,"Según el DANE, en septiembre de 2026, 34 bultos de 10-20-20 (bulto de 50 kg) en Valle del Cauca le cuestan **$5.967.000**.
+
+Eso sale de un precio de **$175.500** por bulto (un solo municipio con dato, por eso no hay rango).",True,,calcular_costo_compra,,0,2,5375,114,0.008728
+1335,s4-1335,alias,2026-11-08T01:36:07-05:00,2026-11-08T01:36:14-05:00,7.21,Cuánto vale el bulto de urea 46 en Bolívar,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de urea 46% en Bolívar valía alrededor de **$182.041** (entre $175.000 y $189.083, según el municipio).",True,,consultar_precios,,0,2,5910,73,0.009513
+1336,s4-1336,precio,2026-11-08T01:36:40-05:00,2026-11-08T01:36:48-05:00,8.0,¿Cuánto está costando el kcl por los lados de Quindío?,"Según el DANE, en septiembre de 2026 el cloruro de potasio (KCl 0-0-60) en Quindío está alrededor de **$113.675** el bulto de 50 kg.
+
+Solo hay dato de un municipio, así que no hay rango de precios: esa es la cifra que reportan.",True,,consultar_precios,,0,2,5856,92,0.009457
+1337,s4-1337,precio,2026-11-08T01:37:13-05:00,2026-11-08T01:37:21-05:00,7.78,Cuánto vale el bulto de 10-30-10 en Huila,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de 10-30-10 en Huila valía alrededor de **$230.583** (entre $226.500 y $234.667, según el municipio).",True,,consultar_precios,,0,2,5871,77,0.009457
+1338,s4-1338,municipio,2026-11-08T01:37:46-05:00,2026-11-08T01:37:54-05:00,7.39,"vivo en ibague, cuanto me sale el bulto de dap?","Según el DANE, en **septiembre de 2026**, el bulto de DAP (50 kg) en **Ibagué, Tolima**, está alrededor de **$226.500**.",True,,consultar_precios,,0,2,5696,92,0.009203
+1339,s4-1339,costo,2026-11-08T01:38:19-05:00,2026-11-08T01:38:25-05:00,6.2,"Si compro 44 bultos de 10-30-10 en Narino, cuanto pago?","Según el DANE, en septiembre de 2026, 44 bultos de 10-30-10 (bulto de 50 kg) en Nariño le salen alrededor de **$9.321.400** (entre $8.954.000 y $10.010.000, según el municipio). Cada bulto anda por $211.850.",True,,calcular_costo_compra,,0,2,5377,113,0.008729
+1340,s4-1340,alias,2026-11-08T01:38:52-05:00,2026-11-08T01:38:59-05:00,6.71,A como esta el triple quince en Norte de Santander,"Según el DANE, en **septiembre de 2026** el triple quince (15-15-15) en Norte de Santander está **alrededor de $163.389** el bulto de 50 kg (entre **$155.500** y **$179.000**, según el municipio). Dato de 6 municipios.
+
+Si me dice cuántos bultos va a comprar o si quiere saber si conviene comprar ya o esperar, se lo calculo.",True,,consultar_precios,,0,2,5863,149,0.009559
+1341,s4-1341,precio,2026-11-08T01:39:25-05:00,2026-11-08T01:39:34-05:00,8.45,¿En cuánto anda el urea en Cesar este mes?,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de urea 46% en Cesar anda alrededor de **$172.575** (entre $155.000 y $190.150, según el municipio). Es el último dato publicado; no es el precio de hoy.",True,,consultar_precios,,0,2,5850,82,0.009432
+1342,s4-1342,costo,2026-11-08T01:39:58-05:00,2026-11-08T01:40:08-05:00,9.59,"Cuanta plata necesito para 39 bultos de kcl en Bogota, D.C.","Según el DANE, en septiembre de 2026 el cloruro de potasio (KCl, bulto de 50 kg) en Bogotá, D.C. estaba alrededor de **$122.838** el bulto.
+
+Para **39 bultos** necesita unos **$4.790.682**. En Bogotá solo hay un dato de municipio, así que no hay rango de precios.",True,,calcular_costo_compra,,0,2,5603,147,0.009142
+1343,s4-1343,municipio,2026-11-08T01:40:31-05:00,2026-11-08T01:40:41-05:00,9.92,precio del cal dolomita en algeciras,"Según el DANE, en **agosto de 2026** el bulto de 50 kg de cal dolomita en **Algeciras (Huila)** estaba alrededor de **$16.500**.
+
+Ese es el precio reportado en ese municipio (no hay rango porque solo hay dato de Algeciras). Los datos salen con unas 3 semanas de retraso; no es el precio de hoy.",True,,consultar_precios,,0,2,5861,145,0.00955
+1344,s4-1344,precio,2026-11-08T01:41:04-05:00,2026-11-08T01:41:14-05:00,9.56,en cuánto anda el kcl en norte de santander este mes,"Según el DANE, en **septiembre de 2026** el KCl (cloruro de potasio 0-0-60, bulto de 50 kg) en Norte de Santander andaba **alrededor de $119.833** (entre $119.000 y $120.667, según el municipio).
+
+Ese es el último dato publicado; no es el precio de hoy.",True,,consultar_precios,,0,2,6010,123,0.009751
+1345,s4-1345,precio,2026-11-08T01:41:37-05:00,2026-11-08T01:41:45-05:00,7.42,precio del kcl en Santander,"Según el DANE, en **septiembre de 2026** el cloruro de potasio (KCl 0-0-60) en Santander está alrededor de **$123.333** el bulto de 50 kg.
+
+Solo hay dato de un municipio y el precio mínimo y máximo coinciden, así que no hay rango. Es el último mes publicado (no es el precio de hoy).",True,,consultar_precios,,0,2,5686,102,0.009203
+1346,s4-1346,municipio,2026-11-08T01:42:10-05:00,2026-11-08T01:42:18-05:00,7.4,"Vivo en Chiquinquirá, ¿cuánto me sale el bulto de dap?","Según el DANE, en **agosto de 2026** el bulto de DAP (50 kg) en **Chiquinquirá** (Boyacá) estaba alrededor de **$233.000**.",True,,consultar_precios,,0,2,5599,88,0.009042
+1347,s4-1347,vecinos,2026-11-08T01:42:43-05:00,2026-11-08T01:42:54-05:00,10.87,precio del 10-20-20 en caldas,"Según el DANE, **en septiembre de 2026 no hay precio de 10-20-20 en Caldas**.
+
+La opción vecina más barata con dato reciente es **Antioquia**: alrededor de **$160.919** el bulto de 50 kg (entre $150.700 y $173.550, según el municipio).
+
+También hay dato en:
+- **Cundinamarca**: alrededor de $166.091 (entre $163.000 y $170.000)
+- **Boyacá**: $180.500
+
+En Risaralda y Tolima tampoco hay dato. Si me dice otro insumo o si quiere el costo de varios bultos, se lo calculo.",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos,0,3,8646,197,0.01406
+1348,s4-1348,costo,2026-11-08T01:43:16-05:00,2026-11-08T01:43:24-05:00,8.09,"si compro 4 bultos de kcl en sucre, cuánto pago","Según el DANE, en septiembre de 2026 el cloruro de potasio (KCl, bulto de 50 kg) en Sucre estaba alrededor de **$135.000** el bulto (un solo municipio con dato).
+
+Por **4 bultos** pagaría alrededor de **$540.000**.",True,,calcular_costo_compra,,0,2,5340,98,0.008646
+1349,s4-1349,costo,2026-11-08T01:43:49-05:00,2026-11-08T01:43:57-05:00,7.16,Cuánta plata necesito para 37 bultos de urea en Meta,"Según el DANE, en septiembre de 2026, 37 bultos de urea (50 kg) en Meta le salen **alrededor de $6.771.629** (entre $6.635.950 y $6.907.271, según el municipio).
+
+Eso es a unos $183.017 el bulto.",True,,calcular_costo_compra,,0,2,5301,99,0.008586
+1350,s4-1350,fuera_de_alcance,2026-11-08T01:44:22-05:00,2026-11-08T01:44:30-05:00,7.52,"me salió una plaga en el lulo, ¿qué veneno uso?","No le puedo decir qué veneno usar ni diagnosticar la plaga: yo solo manejo precios de insumos y cuándo conviene comprar, no soy agrónomo.
+
+Para el lulo, consulte de inmediato a un agrónomo, a la UMATA de su municipio o al ICA: ellos sí pueden identificar la plaga y decirle el producto y la dosis adecuados.
+
+Si me dice qué insumo quiere (por ejemplo un insecticida concreto) y en qué departamento está, le puedo decir el precio según el DANE, si conviene comprar ya y dónde sale más barato.",True,,,,0,1,2504,118,0.004169
+1351,s4-1351,precio,2026-11-08T01:44:55-05:00,2026-11-08T01:45:03-05:00,8.1,¿cuánto vale el bulto de cal dolomita en cundinamarca?,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de cal dolomita en Cundinamarca valía alrededor de **$16.183** (entre **$14.150** y **$18.000**, según el municipio; hay dato en 8 municipios).",True,,consultar_precios,,0,2,5856,88,0.009451
+1352,s4-1352,municipio,2026-11-08T01:45:28-05:00,2026-11-08T01:45:38-05:00,9.19,¿Cuánto vale el dap en Medellín?,"Según el DANE, en **septiembre de 2026** el DAP (fosfato diamónico 18-46-0) en **Medellín** valía alrededor de **$231.500** el bulto de 50 kg.
+
+Ese es el dato de ese municipio; no hay rango porque solo hay un reporte. Los precios del DANE salen con unas 3 semanas de retraso, así que no es el de hoy.",True,,consultar_precios,,0,2,5891,140,0.009589
+1353,s4-1353,municipio,2026-11-08T01:46:01-05:00,2026-11-08T01:46:11-05:00,9.23,¿cuánto vale el 10-20-20 en subachoque?,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **10-20-20** en **Subachoque** (Cundinamarca) valía alrededor de **$163.800**.",True,,consultar_precios,,0,2,5783,104,0.00936
+1354,s4-1354,precio,2026-11-08T01:46:34-05:00,2026-11-08T01:46:45-05:00,10.69,"necesito saber el precio del bulto de urea en quindio, por favor","Según el DANE, en **julio de 2026** el bulto de urea (50 kg) en Quindío estaba alrededor de **$191.486**.
+
+Solo hay dato de un municipio en ese departamento, y el mínimo y el máximo coinciden en esa cifra. No es el precio de hoy: el DANE lo publicó con retraso (dato de julio).",True,,consultar_precios,,0,2,5546,120,0.009009
+1355,s4-1355,municipio,2026-11-08T01:47:07-05:00,2026-11-08T01:47:16-05:00,8.28,precio del 13-26-6 en Ventaquemada,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **13-26-6** en **Ventaquemada (Boyacá)** estaba alrededor de **$180.267**.
+
+Ese es el último dato publicado; no es el precio de hoy. Si quiere, le puedo decir cuánto le saldrían varios bultos o si conviene comprar ya o esperar.",True,,consultar_precios,,0,2,5842,146,0.009521
+1356,s4-1356,precio,2026-11-08T01:47:40-05:00,2026-11-08T01:47:48-05:00,7.88,"necesito saber el precio del bulto de 15-15-15 en atlántico, por favor","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **15-15-15** en Atlántico está alrededor de **$187.150**.
+
+Solo hay dato de un municipio, así que no hay rango de precios. Es el último mes publicado y el dato está al día.",True,,consultar_precios,,0,2,5861,113,0.009499
+1357,s4-1357,alias,2026-11-08T01:48:13-05:00,2026-11-08T01:48:23-05:00,9.57,A como esta el triple 15 en Sucre?,"Según el DANE, en septiembre de 2026 el triple 15 (15-15-15) en Sucre estaba **alrededor de $180.000** el bulto de 50 kg.
+
+Solo hay dato de un municipio y el precio mínimo y máximo coinciden, así que no hay rango.",True,,consultar_precios,,0,2,5883,86,0.009491
+1358,s4-1358,vecinos,2026-11-08T01:48:46-05:00,2026-11-08T01:48:59-05:00,12.14,¿cuánto vale el 13-26-6 en putumayo?,"En **Putumayo** el DANE no tiene precios de **13-26-6** en los últimos 12 meses (el último mes publicado es **septiembre de 2026**).
+
+La opción vecina más barata con dato reciente es **Nariño**: alrededor de **$178.383** el bulto de 50 kg (entre **$172.433** y **$184.333**, según el municipio), según el DANE en **septiembre de 2026**.
+
+Si me dice otro departamento (por ejemplo Nariño, Cauca o Caquetá) o cuántos bultos va a comprar, le ayudo con eso.",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos,0,3,8657,235,0.014138
+1359,s4-1359,fuera_de_alcance,2026-11-08T01:49:19-05:00,2026-11-08T01:49:25-05:00,5.51,Cada cuanto debo abonar el arroz,"No soy agrónomo y no le puedo decir cada cuánto abonar el arroz ni qué dosis usar: eso depende del suelo, la variedad y el estado del cultivo.
+
+Consulte a un agrónomo, a la UMATA de su municipio o al ICA; ellos sí le orientan en el campo.
+
+Si me dice qué insumo quiere (urea, 15-15-15, DAP, etc.) y en qué departamento está, le puedo decir el precio según el DANE, si conviene comprar ya y dónde está más barato.",True,,,,0,1,2495,111,0.004144
+1360,s4-1360,tendencia,2026-11-08T01:49:52-05:00,2026-11-08T01:50:09-05:00,16.19,"Tengo que abonar pronto, ¿compro el dap ya o aguanto? Soy de Cauca","Según el DANE, en **septiembre de 2026** el bulto de DAP (50 kg) en Cauca está **alrededor de $236.111** (entre $219.000 y $251.667, según el municipio).
+
+**Recomendación: sin apuro.** En los últimos 6 meses el precio casi no se mueve (+0,3 % por mes). Bajó un poco frente a agosto (−1,2 %), pero está **más caro que en septiembre de 2025** (+10,2 %).
+
+Como usted **tiene que abonar pronto**, cómprelo cuando lo vaya a usar: no hay señal de que baje ni de que se dispare de un mes a otro.
+
+El dólar (",True,,analizar_tendencia | consultar_trm,,0,2,5740,275,0.009564
+1361,s4-1361,vecinos,2026-11-08T01:50:25-05:00,2026-11-08T01:50:43-05:00,17.53,precio del 15-15-15 en amazonas,"No hay datos del DANE de **15-15-15** en **Amazonas**. El último mes publicado es **septiembre de 2026**.
+
+En los departamentos vecinos tampoco hay un precio reciente: **Caquetá** y **Vaupés** no tienen dato, y en **Putumayo** el último registro es de **noviembre de 2025** (ya viejo, unos 10 meses), alrededor de **$141.500** el bulto de 50 kg. Con eso no conviene decidir una compra.
+
+Si me dice otro departamento (por ejemplo Putumayo, Huila o Valle del Cauca) le busco el precio actualizado.",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos,0,3,8416,186,0.013677
+1362,s4-1362,costo,2026-11-08T01:50:58-05:00,2026-11-08T01:51:07-05:00,8.64,¿cuánto me cuestan 6 bultos de urea en cundinamarca?,"Según el DANE, en septiembre de 2026, 6 bultos de urea (50 kg) en Cundinamarca le cuestan alrededor de **$1.034.514** (entre **$936.000** y **$1.260.000**, según el municipio).",True,,calcular_costo_compra,,0,2,5331,91,0.008621
+1363,s4-1363,precio,2026-11-08T01:51:32-05:00,2026-11-08T01:51:47-05:00,15.52,"¿a cómo está la urea en bogotá, d.c.?","Según el DANE, en septiembre de 2026 el bulto de 50 kg de urea 46% en Bogotá, D.C. está alrededor de $175.300.",True,,consultar_precios,,0,2,6202,61,0.009958
+1364,s4-1364,municipio,2026-11-08T01:52:05-05:00,2026-11-08T01:52:11-05:00,6.61,"A cómo está el bulto de urea en Pitalito, Huila","Según el DANE, en **septiembre de 2026** el bulto de urea (50 kg) en **Pitalito, Huila** estaba alrededor de **$170.083**.",True,,consultar_precios,,0,2,5891,66,0.009472
+1365,s4-1365,municipio,2026-11-08T01:52:38-05:00,2026-11-08T01:52:45-05:00,7.74,"¿a cómo está el bulto de dap en guadalajara de buga, valle del cauca?","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de DAP (fosfato diamónico 18-46-0) en **Guadalajara de Buga** (Valle del Cauca) estaba **alrededor de $238.000**.
+
+Ese es el último dato publicado; no es el precio de hoy.",True,,consultar_precios,,0,2,5906,126,0.009591
+1366,s4-1366,municipio,2026-11-08T01:53:11-05:00,2026-11-08T01:53:20-05:00,9.76,que precio tiene el urea en el municipio de barrancabermeja,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de urea 46% en Barrancabermeja (Santander) costaba alrededor de $164.000.
+
+Ese es el último dato publicado; no es el precio de hoy. Si quiere, le puedo decir cuánto le salen varios bultos o si conviene comprar ya o esperar.",True,,consultar_precios,,0,2,5759,133,0.009368
+1367,s4-1367,precio,2026-11-08T01:53:44-05:00,2026-11-08T01:53:52-05:00,8.23,precio del urea en norte de santander,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de urea 46% en Norte de Santander estaba **alrededor de $172.625** (entre $163.000 y $183.500, según el municipio). Dato de 4 municipios.",True,,consultar_precios,,0,2,5803,80,0.009354
+1368,s4-1368,precio,2026-11-08T01:54:17-05:00,2026-11-08T01:54:23-05:00,6.65,precio del 15-15-15 en Atlántico,"Según el DANE, en septiembre de 2026 el **15-15-15** en Atlántico valía **alrededor de $187.150** el bulto de 50 kg.
+
+Solo hay dato de un municipio y el precio mínimo y máximo coinciden, así que no hay rango.",True,,consultar_precios,,0,2,5816,84,0.009381
+1369,s4-1369,precio,2026-11-08T01:54:50-05:00,2026-11-08T01:54:56-05:00,6.04,"Buenas, ¿qué precio tiene el dap en Cundinamarca?","Según el DANE, en **septiembre de 2026** el DAP (fosfato diamónico 18-46-0) en Cundinamarca está **alrededor de $229.399 el bulto de 50 kg** (entre $225.250 y $234.625, según el municipio). Dato de 6 municipios.",True,,consultar_precios,,0,2,5875,92,0.009488
+1370,s4-1370,costo,2026-11-08T01:55:23-05:00,2026-11-08T01:55:31-05:00,8.15,¿Cuánta plata necesito para 23 bultos de 13-26-6 en Nariño?,"Según el DANE, en septiembre de 2026, 23 bultos de 13-26-6 (bulto de 50 kg) en Nariño le salen alrededor de **$4.102.809** (entre **$3.965.959** y **$4.239.659**, según el municipio). Cada bulto anda por unos **$178.383**.",True,,calcular_costo_compra,,0,2,5361,118,0.008712
+1371,s4-1371,precio,2026-11-08T01:55:56-05:00,2026-11-08T01:56:08-05:00,12.91,"Hola, cuanto cuesta el 15-15-15 en Bogota, D.C.","Según el DANE, en septiembre de 2026 el bulto de 50 kg de 15-15-15 en Bogotá, D.C. costaba alrededor de **$175.725**.
+
+Ese es el único dato de ese mes para esa región. Si quiere, le puedo decir cuánto le salen varios bultos o si conviene comprar ya.",True,,consultar_precios,,0,2,6009,105,0.009721
+1372,s4-1372,municipio,2026-11-08T01:56:29-05:00,2026-11-08T01:56:36-05:00,7.26,precio del sulfato de amonio en isnos,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de sulfato de amonio (SAM 21-0-0-24S) en **Isnos (Huila)** costaba **alrededor de $92.500**.
+
+Ese es el último dato publicado; el DANE sale con unas 3 semanas de retraso, así que no es el precio de hoy.
+
+Si quiere, le puedo decir cuánto le salen varios bultos o si conviene comprar ya o esperar.",True,,consultar_precios,,0,2,5917,164,0.009669
+1373,s4-1373,costo,2026-11-08T01:57:02-05:00,2026-11-08T01:57:10-05:00,8.17,Cuánta plata necesito para 29 bultos de 15-15-15 en Boyacá,"Según el DANE, en **septiembre de 2026**, 29 bultos de 15-15-15 (bulto de 50 kg) en Boyacá le salen **alrededor de $4.972.021** (entre $4.531.250 y $5.268.343, según el municipio).
+
+Eso es a unos **$171.449** el bulto.",True,,calcular_costo_compra,,0,2,5315,118,0.008638
+1374,s4-1374,costo,2026-11-08T01:57:35-05:00,2026-11-08T01:57:43-05:00,8.79,"Si compro 15 bultos de urea en Cundinamarca, ¿cuánto pago?","Según el DANE, en septiembre de 2026, 15 bultos de urea (de 50 kg) en Cundinamarca le salen alrededor de **$2.586.285** (entre $2.340.000 y $3.150.000, según el municipio). Cada bulto está por unos $172.419.",True,,calcular_costo_compra,,0,2,5436,124,0.00884
+1375,s4-1375,tendencia,2026-11-08T01:58:08-05:00,2026-11-08T01:58:21-05:00,13.83,"Como viene el precio del dap en Tolima, me apuro a comprar?","Según el DANE, en septiembre de 2026 el DAP en Tolima está alrededor de **$234.398** el bulto de 50 kg (entre **$226.500** y **$241.667**, según el municipio).
+
+**Recomendación: sin apuro.** En los últimos 6 meses el precio está casi quieto (+0,1% por mes). Bajó un poco frente a agosto 2026 (−2,7%). Sí está más caro que en septiembre 2025 (+14,5%).
+
+El dólar viene subiendo (TRM $3.237,83 al 7 de noviembre de 2026, +2,4% en la semana). Como el DAP es importado, si el dólar sigue al alza el precio",True,,analizar_tendencia | consultar_trm,,0,2,5759,206,0.009484
+1376,s4-1376,tendencia,2026-11-08T01:58:41-05:00,2026-11-08T01:59:05-05:00,24.69,El urea en Quindio esta subiendo o bajando,"Según el DANE, en julio de 2026 el bulto de urea (50 kg) en Quindío estaba alrededor de $191.486.
+
+**Va subiendo**, y bastante: en los últimos meses el precio sube cerca de 8,1% cada mes (unos $12.471 más por bulto). Frente al dato anterior (marzo) subió un 36%.
+
+Si la necesita, conviene no esperar.",True,,analizar_tendencia,,0,2,6163,133,0.010011
+1377,s4-1377,alias,2026-11-08T01:59:14-05:00,2026-11-08T01:59:31-05:00,16.89,¿Me conviene comprar urea granulada en Valle del Cauca ahora?,"Según el DANE, en **septiembre de 2026** la urea (Urea 46%, bulto de 50 kg) en Valle del Cauca estaba **alrededor de $163.837** (entre $147.500 y $192.150, según el municipio).
+
+**Recomendación: sin apuro.** En los últimos 6 meses el precio está casi quieto (baja un 0,3% al mes). Frente a agosto bajó 6,5%, pero sigue **22% más cara** que en septiembre de 2025.
+
+El dólar (TRM del 7 de noviembre de 2026) está en **$3.237** y **subió 2,4% esta semana**. Como la urea es importada, si el dólar sigue ",True,,analizar_tendencia | consultar_trm | analizar_tendencia,analizar_tendencia:sin_datos,0,3,9624,330,0.015827
+1378,s4-1378,municipio,2026-11-08T01:59:47-05:00,2026-11-08T01:59:54-05:00,7.56,"a cómo está el bulto de kcl en pacho, cundinamarca","Según el DANE, en **agosto de 2026** el bulto de 50 kg de cloruro de potasio (KCl 0-0-60) en **Pacho (Cundinamarca)** estaba **alrededor de $121.500**.
+
+Ese es el último dato publicado (con unas 3 semanas de retraso). Si quiere, le puedo decir si conviene comprar ya o esperar, o cuánto le salen varios bultos.",True,,consultar_precios,,0,2,5737,153,0.009365
+1379,s4-1379,tendencia,2026-11-08T02:00:20-05:00,2026-11-08T02:00:35-05:00,15.22,¿Compro ya el 15-15-15 o espero que baje? Estoy en Córdoba,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 15-15-15 en Córdoba está **alrededor de $157.750** (entre $155.500 y $160.000, según el municipio).
+
+**Recomendación: sin apuro.** Cómprelo cuando lo necesite; no hay que apurarse ni esperar a que “baje”.
+
+**Por qué:**
+- En los últimos meses el precio está casi quieto (+0,2% por mes).
+- Frente a agosto de 2026 bajó un poco (−2,7%).
+- Frente a septiembre de 2025 ($133.665) sigue más caro (+18%).
+
+El dólar (TRM del 7 de noviembre de 202",True,,analizar_tendencia | consultar_trm,,0,2,5794,301,0.009691
+1380,s4-1380,alias,2026-11-08T02:00:53-05:00,2026-11-08T02:01:05-05:00,12.07,A cómo está el cloruro de potasio en Tolima,"Según el DANE, en **septiembre de 2026** el cloruro de potasio (bulto de 50 kg) en Tolima está **alrededor de $126.521** (entre $113.750 y $143.933, según el municipio).",True,,consultar_precios,,0,2,5895,75,0.009492
+1381,s4-1381,costo,2026-11-08T02:01:26-05:00,2026-11-08T02:01:46-05:00,20.04,¿cuánta plata necesito para 23 bultos de urea en sucre?,"Según el DANE, en septiembre de 2026, 23 bultos de urea (bulto de 50 kg) en Sucre le salen alrededor de **$4.809.093**.
+
+Eso es a unos **$209.091** el bulto. En ese mes el dato sale de un solo municipio, así que no hay rango de precios.",True,,calcular_costo_compra,,0,2,5349,107,0.008675
+1382,s4-1382,precio,2026-11-08T02:01:59-05:00,2026-11-08T02:02:06-05:00,7.45,precio del 10-20-20 en Narino,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **10-20-20** en Nariño está **alrededor de $163.367** (entre **$150.500** y **$176.233**, según el municipio). Dato de 2 municipios.",True,,consultar_precios,,0,2,5881,114,0.009532
+1383,s4-1383,costo,2026-11-08T02:02:32-05:00,2026-11-08T02:02:40-05:00,8.52,¿Cuánto me cuestan 18 bultos de 17-6-18-2 en Risaralda?,"Según el DANE, en septiembre de 2026, 18 bultos de 17-6-18-2 (de 50 kg) en Risaralda le salen alrededor de **$3.360.600**.
+
+Eso es a **$186.700** el bulto. Solo hay dato de un municipio y el precio es el mismo (no hay rango).",True,,calcular_costo_compra,,0,2,5376,118,0.008735
+1384,s4-1384,vecinos,2026-11-08T02:03:05-05:00,2026-11-08T02:03:17-05:00,12.59,precio del 17-6-18-2 en caqueta,"En **Caquetá** el DANE **no tiene precio** del **17-6-18-2** en los últimos 12 meses (el último mes publicado es **septiembre de 2026**).
+
+La opción vecina **más barata con dato reciente** es **Huila**:
+alrededor de **$168.077** el bulto de 50 kg (entre **$162.750** y **$177.560**, según el municipio), según el DANE en **septiembre de 2026**.
+
+También hay dato en **Cauca**: alrededor de **$180.250** (entre **$164.250** y **$211.500**).
+
+En Amazonas, Guaviare, Meta, Putumayo y Vaupés tampoco hay ",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos,0,3,8705,300,0.014318
+1385,s4-1385,alias,2026-11-08T02:03:38-05:00,2026-11-08T02:03:45-05:00,7.15,precio del dolomita en boyaca,"Según el DANE, en **septiembre de 2026** la **cal dolomita** (bulto de 50 kg) en Boyacá costaba **alrededor de $22.556** (entre **$17.667** y **$30.000**, según el municipio). Dato de 3 municipios, al día.",True,,consultar_precios,,0,2,5837,91,0.009426
+1386,s4-1386,tendencia,2026-11-08T02:04:11-05:00,2026-11-08T02:04:29-05:00,18.23,"tengo que abonar pronto, compro el dap ya o aguanto? soy de valle del cauca","Según el DANE, en **septiembre de 2026** el DAP (fosfato diamónico, bulto de 50 kg) en Valle del Cauca está **alrededor de $246.085** (entre $238.000 y $263.650, según el municipio).
+
+**Recomendación: compre ya.**
+
+En los últimos 6 meses el precio viene subiendo cerca de **2,4% cada mes** (unos $5.663 más por bulto). Está **16,8% más caro** que en septiembre de 2025 ($210.670). El último mes bajó un poquito (−1,6%), pero la tendencia de medio año es al alza.
+
+El dólar también está subiendo (TRM ",True,,analizar_tendencia | consultar_trm,,0,2,5784,242,0.009581
+1387,s4-1387,precio,2026-11-08T02:04:44-05:00,2026-11-08T02:04:51-05:00,7.6,¿Cuánto vale el bulto de kcl en Casanare?,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de cloruro de potasio (KCl 0-0-60) en Casanare vale alrededor de **$137.667** (entre **$126.333** y **$149.000**, según el municipio).",True,,consultar_precios,,0,2,5820,87,0.009392
+1388,s4-1388,costo,2026-11-08T02:05:17-05:00,2026-11-08T02:05:26-05:00,9.25,cuanta plata necesito para 43 bultos de urea en sucre?,"Según el DANE, en septiembre de 2026, 43 bultos de urea (bulto de 50 kg) en Sucre le salen en **$8.990.913**.
+
+Eso es a **$209.091** el bulto. Solo hay dato de un municipio y el precio es el mismo, sin rango.",True,,calcular_costo_compra,,0,2,5337,102,0.008648
+1389,s4-1389,costo,2026-11-08T02:05:50-05:00,2026-11-08T02:06:02-05:00,12.13,cuanta plata necesito para 50 bultos de 10-30-10 en santander?,"Según el DANE, en septiembre de 2026, 50 bultos de 10-30-10 (bulto de 50 kg) en Santander le salen alrededor de **$9.650.000**.
+
+Cada bulto está a unos **$193.000**. Solo hay dato de un municipio y el precio es el mismo en ese valor.",True,,calcular_costo_compra,,0,2,5366,109,0.008705
+1390,s4-1390,precio,2026-11-08T02:06:23-05:00,2026-11-08T02:06:30-05:00,7.2,¿en cuánto anda el dap en cauca este mes?,"Según el DANE, en **septiembre de 2026** el DAP (fosfato diamónico 18-46-0) en el Cauca andaba **alrededor de $236.111 el bulto de 50 kg** (entre $219.000 y $251.667, según el municipio).
+
+Ese es el último dato publicado; no es el precio de hoy.",True,,consultar_precios,,0,2,5888,100,0.009521
+1391,s4-1391,costo,2026-11-08T02:06:56-05:00,2026-11-08T02:07:03-05:00,7.54,cuanto valen 3 bultos de kcl en Norte de Santander,"Según el DANE, en septiembre de 2026, 3 bultos de cloruro de potasio (KCl, bulto de 50 kg) en Norte de Santander salen **alrededor de $359.499** (entre $357.000 y $362.001, según el municipio). Cada bulto anda por $119.833.",True,,calcular_costo_compra,,0,2,5378,106,0.00872
+1392,s4-1392,municipio,2026-11-08T02:07:29-05:00,2026-11-08T02:07:37-05:00,7.85,¿cuánto vale el 15-15-15 en girón?,"Según el DANE, en septiembre de 2026 el bulto de 50 kg de 15-15-15 en Girón (Santander) valía alrededor de **$166.000**.",True,,consultar_precios,,0,2,5877,71,0.009457
+1393,s4-1393,precio,2026-11-08T02:08:02-05:00,2026-11-08T02:08:08-05:00,5.86,cuanto vale el bulto de kcl en cundinamarca?,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de cloruro de potasio (KCl 0-0-60) en Cundinamarca valía **alrededor de $122.706** (entre **$113.000** y **$130.000**, según el municipio).",True,,consultar_precios,,0,2,5843,92,0.009437
+1394,s4-1394,precio,2026-11-08T02:08:35-05:00,2026-11-08T02:08:41-05:00,6.33,¿cuánto está costando el 17-6-18-2 por los lados de cundinamarca?,"Según el DANE, en **septiembre de 2026** el 17-6-18-2 (bulto de 50 kg) en Cundinamarca está **alrededor de $176.000** (entre $163.500 y $188.500, según el municipio).
+
+Si me dice cuántos bultos va a comprar o si quiere saber si conviene comprar ya o esperar, se lo calculo.",True,,consultar_precios,,0,2,5925,142,0.009647
+1395,s4-1395,vecinos,2026-11-08T02:09:08-05:00,2026-11-08T02:09:18-05:00,9.96,¿A cómo está el bulto de 13-26-6 en Caldas?,"Según el DANE, en **septiembre de 2026** no hay precio de 13-26-6 en Caldas (ni en los últimos 12 meses).
+
+La alternativa vecina más barata con dato reciente es **Boyacá**: alrededor de **$190.972** el bulto de 50 kg (entre $180.267 y $200.300, según el municipio).
+
+También hay dato reciente en Cundinamarca: alrededor de $204.625 (entre $201.750 y $207.500). En Risaralda y Tolima no hay dato; el de Antioquia está viejo (mayo de 2026).",True,,consultar_precios | consultar_regiones_vecinas,consultar_precios:sin_datos,0,3,8683,205,0.014132
+1396,s4-1396,alias,2026-11-08T02:09:41-05:00,2026-11-08T02:09:57-05:00,16.09,Me conviene comprar fosfato diamonico en Norte de Santander ahora?,"Según el DANE, en **septiembre de 2026** el fosfato diamónico (DAP) en Norte de Santander está **alrededor de $230.250** el bulto de 50 kg (entre **$228.500 y $232.000** según el municipio).
+
+**Recomendación: sin apuro.** En los últimos 6 meses el precio está casi quieto (+0,5% por mes). Bajó un poco frente a agosto (−1,9%), pero sigue **un 10% más caro** que en septiembre de 2025 ($209.000).
+
+El dólar va **subiendo** (TRM $3.237, +2,4% esta semana). Como el DAP es importado, si el dólar sigue a",True,,analizar_tendencia | consultar_trm,,0,2,6109,250,0.010111
+1397,s4-1397,precio,2026-11-08T02:10:14-05:00,2026-11-08T02:10:21-05:00,7.29,"hola, ¿cuánto cuesta el 17-6-18-2 en cauca?","Según el DANE, en **septiembre de 2026** el bulto de 50 kg de 17-6-18-2 en Cauca costaba **alrededor de $180.250** (entre **$164.250** y **$211.500**, según el municipio). Hay dato de 3 municipios y está al día.
+
+Si me dice cuántos bultos va a comprar o si quiere saber si conviene comprar ya o esperar, le ayudo con eso.",True,,consultar_precios,,0,2,5880,151,0.009589
+1398,s4-1398,precio,2026-11-08T02:10:47-05:00,2026-11-08T02:10:55-05:00,8.31,En cuanto anda el 10-30-10 en Norte de Santander este mes,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de **10-30-10** en Norte de Santander andaba en **alrededor de $206.500**.
+
+Solo hay dato de un municipio y el precio mínimo y máximo coinciden, así que no hay rango. Ese es el último mes publicado (no es el precio de hoy).",True,,consultar_precios,,0,2,5932,127,0.009634
+1399,s4-1399,costo,2026-11-08T02:11:20-05:00,2026-11-08T02:11:27-05:00,7.06,Cuánto me cuestan 16 bultos de cal dolomita en Tolima,"Según el DANE, en septiembre de 2026, 16 bultos de cal dolomita (bulto de 50 kg) en Tolima le salen alrededor de **$299.680** (entre **$270.000** y **$384.000**, según el municipio).
+
+El precio por bulto anda por **$18.730**.",True,,calcular_costo_compra,,0,2,5328,109,0.008645
+1400,s4-1400,precio,2026-11-08T02:11:53-05:00,2026-11-08T02:11:59-05:00,6.5,Cuanto vale el bulto de kcl en Norte de Santander,"Según el DANE, en **septiembre de 2026** el bulto de 50 kg de cloruro de potasio (KCl 0-0-60) en Norte de Santander vale **alrededor de $119.833** (entre **$119.000** y **$120.667**, según el municipio).",True,,consultar_precios,,0,2,5829,90,0.009411
